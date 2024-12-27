@@ -14,6 +14,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     // Ottenere i valori dagli input
     let email = document.getElementById("email").value;
     let password = document.getElementById("pass").value;
+    let rememberMe = document.getElementById("rememberMe").checked;
 
     clearError("email");
     clearError("password");
@@ -31,12 +32,12 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     } 
 
     // Se non abbiamo riscontrato errori, controlliamo backend che l'utente sia registrato effettivamente, ed abbia inserito la password corretta
-    fetch("login.php", {
+    fetch("php/login.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email, password }) // Trasformiamo i dati in stringa JSON 
+        body: JSON.stringify({ email, password, rememberMe }) // Trasformiamo i dati in stringa JSON 
     })
     .then(response => response.json())
     .then(data => {

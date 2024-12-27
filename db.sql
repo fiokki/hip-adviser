@@ -5,8 +5,11 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    user_name VARCHAR(20) NOT NULL,
+    user_name VARCHAR(20),
     role ENUM('user', 'admin') DEFAULT 'user',
+    newsletter BOOLEAN DEFAULT FALSE,
+    cookie_id VARCHAR(64) DEFAULT NULL,
+    cookie_expiry INT(11) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -15,7 +18,7 @@ CREATE TABLE artists (
     id INT AUTO_INCREMENT PRIMARY KEY,
     artist_name VARCHAR(30) NOT NULL UNIQUE,
     photo VARCHAR(255),
-    bio TEXT,
+    bio TEXT
 );
 
 -- Creazione della tabella albums

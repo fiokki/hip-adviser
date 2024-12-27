@@ -41,7 +41,7 @@
                         <label for="newsletter">Voglio iscrivermi alla newsletter</label>
                         <input type="checkbox" id="newsletter" name="newsletter">
                         
-                        <input type="submit" name="submit" value="Iscriviti!"> 
+                        <input type="submit" name="submit" value="Iscriviti!">
                 </form>
             </div>
         <!-- Poi inserire footer -->

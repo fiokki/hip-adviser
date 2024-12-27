@@ -67,38 +67,9 @@ document.getElementById("registrationForm").addEventListener("submit", function 
         hasError = true;
     }
 
-    // Se non abbiamo riscontrato errori, controlliamo se l'email è già in uso. Qualora non lo fosse, il modulo di registrazione è corretto
-    if (!hasError) {
-        // Facciamo una richiesta AJAX al server per verificare l'email
-        const xhr = new XMLHttpRequest(); // Creiamo un'istanza di XMLHttpRequest per inviare richieste http asincrone (asincrona usando il valore 'true')
-        xhr.open("POST", "php/checkemail.php", true); 
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        // Funzione che viene eseguita al cambio dello stato della richiesta
-        xhr.onreadystatechange = function () {
-            // Verifichiamo che la richiesta sia stata completata, con risposta positiva (stato http 200)
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                if (response.exists) {
-                    showError("email", "L'indirizzo email è già in uso");
-                } else{
-                    // document.getElementById("registrationForm").submit(); SE SOSTITUISSIMO QUESTO CON QUESTE DUE RIGHE DI CODICE QUA SOTTO SI POTREBBE RISOLVERE???
-                    const form = document.getElementById("registrationForm");
-                    HTMLFormElement.prototype.submit.call(form);
-                }
-            }
-        };
-
-        xhr.send("email=" + encodeURIComponent(email)); // Invio email al server
-    }
-});
-
-    
-
-/*
    // Se non abbiamo riscontrato errori, controlliamo se l'email è già in uso
    if (!hasError) {
-    // Usare Fetch API per verificare l'email
+    // Usiamo Fetch API per verificare l'email
     fetch("php/checkemail.php", {
         method: "POST",
         headers: {
@@ -116,7 +87,8 @@ document.getElementById("registrationForm").addEventListener("submit", function 
         if (data.exists) {
             showError("email", "L'indirizzo email è già in uso");
         } else {
-            document.getElementById("registrationForm").submit();
+            const form = document.getElementById("registrationForm");
+            HTMLFormElement.prototype.submit.call(form);
         }
     })
     .catch(error => {
@@ -125,4 +97,3 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     });
 }
 });
-*/

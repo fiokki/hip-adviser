@@ -22,6 +22,9 @@
                     <input type="password" id="pass" name="pass">
                     <div id="passwordError" class="error"></div>
 
+                    <label for="rememberMe">Ricordami</label>
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+
                     <input type="submit" name="submit" value="Accedi!">
                 </form>
                 <div id="loginError" class="error"></div>
