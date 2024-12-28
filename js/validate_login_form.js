@@ -13,7 +13,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
     // Ottenere i valori dagli input
     let email = document.getElementById("email").value;
-    let password = document.getElementById("pass").value;
+    let pass = document.getElementById("pass").value;
     let rememberMe = document.getElementById("rememberMe").checked;
 
     clearError("email");
@@ -26,7 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         hasError = true;
     } 
 
-    if (password === "") {
+    if (pass === "") {
         showError("password", "La password è obbligatoria.");
         hasError = true;
     } 
@@ -37,7 +37,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email, password, rememberMe }) // Trasformiamo i dati in stringa JSON 
+        body: JSON.stringify({ email, pass, rememberMe }) // Trasformiamo i dati in stringa JSON 
     })
     .then(response => response.json())
     .then(data => {

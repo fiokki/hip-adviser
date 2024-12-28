@@ -19,7 +19,7 @@
     }
 
     if (!empty($errors)) {
-        echo json_encode(["errors" => $errors]);
+        echo json_encode(["error" => $errors]);
         exit();
     }
 
@@ -65,13 +65,13 @@
             } else {
                 // Password errata
                 $errors[] = "La password è errata.";
-                echo json_encode(["errors" => $errors]);
+                echo json_encode(["message" => $errors]);
                 exit();
             }
         } else {
             // Utente non trovato
             $errors[] = "La email inserita non è corretta.";
-            echo json_encode(["errors" => $errors]);
+            echo json_encode(["message" => $errors]);
             exit();
         }
 
@@ -79,7 +79,7 @@
     } else {
         // Errore nella preparazione della query
         $errors[] = "Errore del server. Riprovi più tardi.";
-        echo json_encode(["errors" => $errors]);
+        echo json_encode(["error" => $errors]);
         exit();
     }
 
