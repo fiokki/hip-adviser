@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="it">
         <head>
@@ -9,6 +12,14 @@
 
         <body>
                 <h2> Questa è l'homepage! </h2>
-
+                <?php
+                        if($_SESSION["user_id"]) {
+                ?>
+                        Welcome <?php echo $_SESSION["user_id"]; ?>. Click here to <a href="logout.php" tite="Logout">Logout.
+                <?php
+                        } else
+                        echo "<h1>Please login first .</h1>";
+                ?>
         </body>
 </html>
+
