@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
-        <?php include 'head.php' ?>
+        <?php include_once 'head.php' ?>
         <title>Login</title>
+        </head>
         <body>
             <!-- Poi inserire header/navbar -->
             <div class="container">

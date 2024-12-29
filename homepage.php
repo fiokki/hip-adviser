@@ -3,8 +3,9 @@ require_once 'db/get_user_by_cookie.php';
 ?>
 <!DOCTYPE html>
 <html lang="it">
-        <title> Hip-adviser </title>
-        <?php include 'head.php' ?>
+        <?php include_once 'head.php' ?>
+        <title> Hip-Adviser </title>
+        </head>
         <body>
                 <h2> Questa è l'homepage! </h2>
                 <?php
