@@ -1,7 +1,6 @@
 <?php
 require_once 'db/get_user_by_cookie.php';
 ?>
-<!DOCTYPE html>
 <html lang="it">
         <?php include_once 'head.php' ?>
         <title> Hip-Adviser </title>

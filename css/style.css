@@ -1,226 +1,231 @@
-/* Base Reset */
+/* Impostazioni di base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* White text */
-    line-height: 1.6;
-    font-size: 16px;
-    padding: 0 20px;
-    display: flex; /* Flexbox */
-    justify-content: center; /* Horizontal centering */
-    align-items: center; /* Vertical centering */
-  }
-
-  
-  form {
-    color: #121212;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 30px;
-    width: 300px;
-    box-sizing: border-box;
-    box-align: center;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #e0e0e0;
-    border-radius: 25px;
-    outline: none;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="password"]:focus {
-    border-color: #999;
-  }
-  
-  input.error {
-    border-color: #ff5252;
-  }
-  
-  .error-message {
-    color: #ff5252;
-    font-size: 12px;
-    margin: -8px 0 8px 10px;
-  }
-  
-  input[type="submit"] {
-    width: 100%;
-    background-color: #ffff64;
-    border: none;
-    border-radius: 25px;
-    padding: 10px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #e0a806;
-  }
-
-  
-  
-  /* Header Style */
-  header {
-    background-color: #1e1e1e;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 3px solid #ffff64; /* Vibrant yellow highlight */
-  }
-  
-  header h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-  }
-  
-  header p {
-    font-size: 1.2rem;
-    color: #ffff64;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    border-top: 3px solid #ffff64;
-  }
-  
-  footer p {
-    font-size: 0.9rem;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    .review-card {
-      padding: 15px;
-    }
-  
-    nav a {
-      margin: 0 10px;
-    }
-  }
-  
-
-/* /////////////////////////////////// */
-
-  /* Reset e impostazioni base */
-body, h1, h2, p, a {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
 }
 
 body {
-  background-color: #373838;
-  color: #ffb101;
-  line-height: 1.6;
+  background-color: #1d1d1d;
+  color: whitesmoke; 
+  line-height: 1.6; /* Spaziatura verticale tra righe di testo (forse un po' troppo) */
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* L'altezza minima è pari a quella della finestra del browser */
 }
 
-/* Container */
 .container {
-  max-width: 800px;
+  width: 350px;
   margin: 50px auto;
   padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Titoli */
-h2 {
-  margin-bottom: 20px;
-  color: #eeedef;
+  background-color: #373838;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
+  margin-bottom: 10px; 
 }
 
-/* Etichette e input */
-label {
+.container h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container label {
   display: block;
   margin-top: 15px;
-  font-weight: bold;
-  color: #555;
+  font-size: 14px;
+  text-align: left;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 8px;
   margin-top: 5px;
   margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  color: #ffb101;
+  border: 2px solid #1d1d1d;
+  background-color: #373838;
+  border-radius: 10px;
+  font-size: 14px;
 }
 
-input[type="checkbox"] {
-  margin-right: 5px;
+/* Checkbox del remember me e newsletter*/
+.container .checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: flex-start;
+  gap: 10px; 
 }
 
-/* Pulsanti */
-input[type="submit"] {
-  display: block;
-  background: #28a745;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+.container input[type="checkbox"] {
+  margin-top: 15px; 
+}
+
+/* Pulsante submit */
+.container input[type="submit"] {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #ffb101;
+  border: 2px solid #1d1d1d;
+  color: #1d1d1d;
+  border-radius: 10px;
+  font-size: 14px;
   cursor: pointer;
-  margin-top: 20px;
-  width: 100%;
+  text-transform: uppercase;
 }
 
-input[type="submit"]:hover {
-  background: #218838;
+.container input[type="submit"]:hover {
+  background-color: #e2a109;
 }
 
-/* Link */
-a {
-  color: #007bff;
-  text-decoration: none;
+/* Messaggi di errore */
+.error {
+  font-size: 12px;
+  color: red;
+  margin-top: -5px;
+  margin-bottom: 10px;
 }
 
-a:hover {
+/* Additional text below form */
+.container #loginError {
+  font-size: 12px;
+  margin-top: 10px;
+  color: red;
+}
+
+.container a {
+  display: block;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #1d1d1d;
   text-decoration: underline;
 }
 
-/* Errori */
-.error {
-  color: red;
-  font-size: 0.9em;
-  margin-top: 5px;
+.register-link, .login-link {
+  text-align: center;
+  margin-top: 10px;
 }
 
-/* Titolo principale */
-h1 {
-  text-align: center;
-  margin-top: 50px;
+.register-link a, .login-link a {
+  color: #ffb101; 
+  text-decoration: underline;
 }
 
-/* Stile per logout */
-.logout {
-  margin-top: 20px;
+.register-link a:hover, .login-link a:hover {
+  color: #e2a109; 
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffb101;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #373838;
+}
+
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: block;
+  background-color: black;
+}
+
+.logo{
+  width: 500px;
+  height: 100%;
+  display: table;
   text-align: center;
+  margin: 5px auto;
+}
+
+.header_right {
+  float: right;
+  height: 100%;
+}
+
+.header_right a {
+  height: 100%;
+  display:table;
+  float: right;
+  padding: 0px 20px;
+}
+
+.header_right a li{
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  color: whitesmoke;
+}
+
+
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #373838; 
+  color: #ffb101; 
+  padding: 10px 20px;
+  font-size: 14px;
+  width: 98%; /* Occupa tutta la larghezza della finestra */
+  position: relative; 
+  margin-top: auto; /* Fa sì che il footer venga spinto al fondo */
+  bottom: 0;
+}
+
+footer .rights {
+  flex: 1; /* Occupa tutto lo spazio a sinistra */
+  text-align: left;
+}
+
+footer .privacy_terms {
+  flex: 2; /* Occupa lo spazio centrale */
+  text-align: center;
+}
+
+footer .privacy_terms a {
+  color: #ffb101; /* Colore giallo scuro per i link */
+  text-decoration: none;
+  margin: 0 10px; /* Distanza tra i link */
+}
+
+footer .privacy_terms a:hover {
+  text-decoration: underline; /* Sottolineatura al passaggio del mouse */
+  color: #e2a109;
+}
+
+footer .socials {
+  flex: 1; /* Occupa tutto lo spazio a destra */
+  display: flex; /* Dispone gli elementi in una riga */
+  align-items: center; /* Allinea verticalmente le icone */
+  gap: 15px; 
+  justify-content: flex-end; /* Giustifica a destra */
+}
+
+footer .socials a {
+  color: #ffb101; 
+  text-decoration: none;
+  margin: 0 10px; /* Distanza tra i link */
+  display: flex; /* Allinea il logo e il testo orizzontalmente */
+  align-items: center; /* Allinea verticalmente il logo con il testo */
+}
+
+footer .socials a:hover {
+  text-decoration: underline; 
+  color: #e2a109;
+}
+
+footer .socials img.social-logo {
+  width: 20px; /* Imposta la dimensione del logo */
+  margin-right: 5px; /* Distanza tra il logo e il testo */
 }

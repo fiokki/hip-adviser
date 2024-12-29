@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
         <?php include_once 'head.php' ?>
-        <title>Registrazione</title>
+        <title> Hip-Adviser | Registrazione </title>
         </head>
         <body>
         <!-- Poi inserire header/navbar -->
             <div class="container">
-                <h2> Iscriviti, ed inizia a recensire i tuoi album preferiti! </h2>
+                <h2> Inizia a recensire i tuoi album preferiti! </h2>
 
                 <form id="registrationForm" action="php/registration.php" method="post">
 
@@ -34,14 +34,20 @@
                         <input type="password" id="confirm" name="confirm">
                         <div id="retypePasswordError" class="error"></div>
 
-                        <label for="newsletter">Voglio iscrivermi alla newsletter</label>
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        
+                        <div class="checkbox-group">
+                            <label for="newsletter">Voglio iscrivermi alla newsletter</label>
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                        </div>
+
                         <input type="submit" name="submit" value="Iscriviti!">
                 </form>
             </div>
-        <!-- Poi inserire footer -->
 
+            <div class="login-link">
+                <p>Se sei già iscritto, <a href="login_form.php">accedi!</a></p>
+            </div>
+
+        <?php include_once 'footer.php' ?>
         <script src="js/validate_registration_form.js"></script>
 
         </body>
