@@ -3,13 +3,8 @@ require_once 'db/get_user_by_cookie.php';
 ?>
 <!DOCTYPE html>
 <html lang="it">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Hip-adviser</title>
-            <!-- Poi inserire stile -->
-        </head>
-
+        <title> Hip-adviser </title>
+        <?php include 'head.php' ?>
         <body>
                 <h2> Questa è l'homepage! </h2>
                 <?php
@@ -22,4 +17,3 @@ require_once 'db/get_user_by_cookie.php';
                         ?>
         </body>
 </html>
-
