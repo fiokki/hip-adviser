@@ -7,30 +7,37 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
     $headerContent = '
         <div class="header">
             <div class="search">
-                <input type="text" placeholder="ricerca" />
+                <input type="text" placeholder="Cerca...">
+                <buttton>🔍</button>
             </div>
             <div class="logo">
-                <img src="images/logo.png" alt="Hip-Adviser Logo"/>
+                <img class="logo" src="images/logo" alt="Hip-Adviser Logo"\>
             </div>
-            <ul class="header-right"> 
-                <a href="php/logout.php"> <li>Logout </li></a>
-            </ul>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="php/logout.php>Logout</a></li>
+                </ul>
+            </nav>
         </div>
     ';
 } else {
     // Header per utenti non loggati
     $headerContent = '
-        <div class=header">
+        <div class="header">
             <div class="search">
-                <input type="text" placeholder="ricerca" />
+                <input type="text" placeholder="Cerca...">
+                <buttton>🔍</button>
             </div>
             <div class="logo">
-                <img src="images/logo.png" alt="Hip-Adviser Logo"/>
+                <img class="logo" src="images/logo" alt="Hip-Adviser Logo"\>
             </div>
-            <ul class="header-right">
-                <a href="login_form.php"> <li> Accedi </li></a>
-                <a href="registration_form.php"> <li> Registrati </li></a>
-            </ul>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="login_form.php"">Accedi</a></li>
+                    <li><p>|</p></li>
+                    <li><a href="register_form.php">Registrati</a></li>
+                </ul>
+            </nav>
         </div>
     ';
 }

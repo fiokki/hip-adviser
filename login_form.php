@@ -3,8 +3,8 @@
         <?php include_once 'head.php' ?>
         <title> Hip-Adviser | Login </title>
         </head>
+        <?php include_once 'header.php' ?>
         <body>
-            <?php include_once 'header.php' ?>
             <div class="container">
                 <h2> Inizia a recensire i tuoi album preferiti! </h2>
     
