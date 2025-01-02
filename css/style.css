@@ -8,7 +8,6 @@ body {
   background-color: #1d1d1d;
   color: whitesmoke; 
   line-height: 1.6; /* Spaziatura verticale tra righe di testo (forse un po' troppo) */
-  padding: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,70 +132,102 @@ input:-webkit-autofill:active{
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
+  background-color: #373838;
+  color: whitesmoke; 
   padding: 10px 0px;
-  background-color: #373838;
-  width: 98%;
-  position: relative; 
+  width: 100%;
+  position: relative;
 }
 
-.search {
+.header .search {
   flex: 1;
-  align-items: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 10px;
 }
 
-.search input {
+.header .search input {
   padding: 5px;
-  color:whitesmoke;
   background-color: #373838;
+  color: #ffb101;
+  border: 1px solid #1d1d1d;
   border-radius: 5px 0 0 5px;
   outline: none;
 }
 
-.search button {
-  padding: 5px;
-  border-left: none;
+.header .search button {
+  border: none;
   cursor: pointer;
-  border-radius: 0 5px 5px 0;
+  appearance: none;
+  background-color: inherit;
 }
 
-.logo img {
-  flex: 2;
-  max-height: 50px;
-  text-align: center;
+.header .search button img {
+  width: 20px; 
+  height: auto; 
+  margin-left: 5px; 
+  transition: transform 0.2s ease-in-out; 
+  border: 0;
+}
+
+.header .search button img:hover {
+  transform: scale(1.1); /* Leggero ingrandimento al passaggio del mouse */
+}
+
+.header .logo {
+  flex: 0; 
+  display: flex;
+  justify-content: center; 
   align-items: center;
 }
 
-.nav-links ul {
-  flex: 1;
-  display: flex; /* Dispone gli elementi in una riga */
-  align-items: center; /* Allinea verticalmente le icone */
-  gap: 15px; 
-  justify-content: flex-end; /* Giustifica a destra */
+.header .logo img {
+  max-height: 50px;
+}
+
+.header .nav-links {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.header .nav-links ul {
   list-style: none;
+  display: flex;
+  gap: 15px; 
   margin: 0;
   padding: 0;
 }
 
-.nav-links li {
+.header .nav-links li {
   display: inline;
 }
 
-.nav-links a {
+.header .nav-links a {
   text-decoration: none;
-  color: whitesmoke;
+  color: #ffb101;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
-.nav-links a:active{
-  color:#ffb101;
+.header .nav-links a:hover {
+  color: #e2a109; 
+  text-decoration: underline; 
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
+.header .nav-links a:active {
+  color: #ffb101; 
 }
 
+.header .nav-links img{
+  width: 20px; 
+  margin-right: 5px; 
+}
 
 
 
@@ -206,9 +237,9 @@ footer {
   align-items: center;
   background-color: #373838; 
   color: #ffb101; 
-  padding: 10px 20px;
+  padding: 10px 0px;
   font-size: 14px;
-  width: 98%; /* Occupa tutta la larghezza della finestra */
+  width: 100%;
   position: relative; 
   margin-top: auto; /* Fa sì che il footer venga spinto al fondo */
   bottom: 0;
@@ -217,6 +248,7 @@ footer {
 footer .rights {
   flex: 1; /* Occupa tutto lo spazio a sinistra */
   text-align: left;
+  margin-left: 10px;
 }
 
 footer .privacy_terms {
@@ -241,6 +273,7 @@ footer .socials {
   align-items: center; /* Allinea verticalmente le icone */
   gap: 15px; 
   justify-content: flex-end; /* Giustifica a destra */
+  margin-right: 10px;
 }
 
 footer .socials a {

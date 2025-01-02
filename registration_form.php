@@ -4,7 +4,7 @@
         <title> Hip-Adviser | Registrazione </title>
         </head>
         <body>
-        <!-- Poi inserire header/navbar -->
+            <?php include_once 'header.php' ?>
             <div class="container">
                 <h2> Inizia a recensire i tuoi album preferiti! </h2>
 

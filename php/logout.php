@@ -4,7 +4,7 @@
     if (!isset($_SESSION["user_id"])) {
         echo "<script>
                 alert('Non sei loggato!');
-                window.location.href = '../homepage.php'; 
+                window.location.href = '../homepage.php';
               </script>";
         exit();
     }

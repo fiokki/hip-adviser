@@ -6,14 +6,18 @@ require_once 'db/get_user_by_cookie.php';
         <title> Hip-Adviser </title>
         </head>
         <body>
+                <?php include_once 'header.php' ?>
                 <h2> Questa è l'homepage! </h2>
                 <?php
                         if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
                 ?>
-                        Ciao <?php echo $_SESSION["user_id"]; ?>. Clicca qui per fare <a href="php/logout.php" tite="Logout">Logout. </h3>"
+                        Ciao <?php echo $_SESSION["user_id"]; ?>. Clicca qui per fare <a href="php/logout.php" tite="Logout">Logout.</a>
                 <?php
-                        } else
-                        echo "<h1>Accedi, merda. <a href='login_form.php'>Login here</a></h1>";
+                        } else  {
+                        echo "<h1>Accedi, merda. <a href='login_form.php'>Login here</a> </h1>";
+                        }
                         ?>
+
+                <?php include_once 'footer.php' ?>
         </body>
 </html>
