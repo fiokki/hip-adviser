@@ -53,6 +53,31 @@ body {
   font-size: 14px;
 }
 
+.container .pass-group {
+  position: relative;
+}
+
+#togglePassword {
+  position: absolute;
+  top: 65%;
+  right: 10px; 
+  transform: translateY(-50%); 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  padding: 0; 
+}
+
+#togglePassword img {
+  width: 30px; 
+  height: auto; 
+  transition: transform 0.2s ease-in-out; 
+}
+
+#togglePassword img:hover {
+  transform: scale(1.1); 
+}
+
 /* Checkbox del remember me e newsletter*/
 .container .checkbox-group {
   display: flex;

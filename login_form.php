@@ -14,8 +14,13 @@
                     <input type="email" id='email' name="email">
                     <div id="emailError" class="error"></div>
 
-                    <label for="pass">Inserisci la tua password:</label>
-                    <input type="password" id="pass" name="pass">
+                    <div class="pass-group">
+                        <label for="pass">Inserisci la tua password:</label>
+                        <input type="password" id="pass" name="pass">
+                        <button type="button" id="togglePassword">
+                            <img src="images/eye.png" alt="Mostra/Nascondi Password" id="eyeIcon">
+                        </button>
+                    </div>
                     <div id="passwordError" class="error"></div>
 
                     <div class="checkbox-group">
@@ -29,11 +34,12 @@
             </div>
 
             <div class="register-link">
-                <p>Se non sei ancora iscritto, <a href="registration_form.php">iscriviti!</a></p>
+                <p>Se non sei ancora iscritto, <a href="registration_form.php">Iscriviti!</a></p>
             </div>
 
             <?php include_once 'footer.php' ?>
             <script src="js/validate_login_form.js"></script>
+            <script src="js/show_password.js"></script>
 
         </body>
 </html>
