@@ -1,10 +1,21 @@
 // Oggetto per tenere traccia dello stato dell'ordinamento per ogni filtro
 let filterState = {
-    release_date: 'DESC',    // Impostazione iniziale per "release_date" (dal più recente)
-    alphabetical: 'ASC',     // Impostazione iniziale per "alphabetical" (A-Z)
-    top_rated: 'DESC',       // Impostazione iniziale per "top_rated" (dal più votato)
-    highest_rated: 'DESC'    // Impostazione iniziale per "highest_rated" (media migliore)
+    release_date: 'ASC',    
+    alphabetical: 'DESC',     
+    top_rated: 'ASC',       
+    highest_rated: 'ASC'   
 };
+
+function getURLParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+    const order = urlParams.get('order');
+
+    // Se il filtro è presente nell'URL, aggiorniamo lo stato
+    if (filter && filterState.hasOwnProperty(filter)) {
+        filterState[filter] = order === 'ASC' ? 'ASC' : 'DESC';
+    }
+}
 
 // Funzione per applicare il filtro selezionato
 function applyFilter(filterType) {
@@ -29,3 +40,6 @@ document.getElementById("filterButton").addEventListener("click", function() {
     const filterMenu = document.getElementById("filter-menu");
     filterMenu.classList.toggle("active");
 });
+
+// Al caricamento della pagina, leggiamo i parametri dell'URL
+getURLParams();

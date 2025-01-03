@@ -26,8 +26,13 @@
                         <input type="email" id="email" name="email">
                         <div id="emailError" class="error"></div>
 
-                        <label for="pass">Password:</label>
-                        <input type="password" id="pass" name="pass">
+                        <div class="pass-group">
+                            <label for="pass">Password:</label>
+                            <input type="password" id="pass" name="pass">
+                            <button type="button" id="togglePassword">
+                                <img src="images/eye.png" alt="Mostra/Nascondi Password" id="eyeIcon">
+                            </button>
+                        </div>
                         <div id="passwordError" class="error"></div>
 
                         <label for="confirm">Conferma la password:</label>
@@ -49,6 +54,7 @@
 
         <?php include_once 'footer.php' ?>
         <script src="js/validate_registration_form.js"></script>
+        <script src="js/show_password.js"></script>
 
         </body>
 </html>
