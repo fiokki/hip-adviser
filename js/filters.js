@@ -3,11 +3,14 @@ let filterState = {
     release_date: 'ASC',    
     alphabetical: 'DESC',     
     top_rated: 'ASC',       
-    highest_rated: 'ASC'   
+    highest_rated: 'ASC',
+    most_albums: 'ASC',
+    alphabetical_artists: 'DESC'
 };
 
 function getURLParams() {
     const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page') || 'albums';
     const filter = urlParams.get('filter');
     const order = urlParams.get('order');
 
@@ -15,6 +18,10 @@ function getURLParams() {
     if (filter && filterState.hasOwnProperty(filter)) {
         filterState[filter] = order === 'ASC' ? 'ASC' : 'DESC';
     }
+
+    // Aggiorna il pulsante del menu in base alla pagina corrente
+    const filterLabel = document.querySelector(".filter-label");
+    filterLabel.textContent = page === 'albums' ? "Ordina album per:" : "Ordina artisti per:";
 }
 
 // Funzione per applicare il filtro selezionato
@@ -26,11 +33,13 @@ function applyFilter(filterType) {
         filterState[filterType] = 'DESC'; // Passa a decrescente (DESC)
     }
 
-    // Crea la nuova URL con i parametri del filtro e dell'ordinamento
+    // Crea il nuovo URL con i parametri del filtro, dell'ordinamento e della pagina
     const newUrl = new URL(window.location.href);
+    const currentPage = newUrl.searchParams.get('page') || 'albums'; // Default su "albums"
+    newUrl.searchParams.set('page', currentPage); // Mantieni la pagina corrente
     newUrl.searchParams.set('filter', filterType);
     newUrl.searchParams.set('order', filterState[filterType]);
-
+    
     // Reindirizza alla nuova URL
     window.location.href = newUrl.toString();
 }

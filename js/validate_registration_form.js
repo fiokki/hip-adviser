@@ -14,7 +14,6 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     // Ottenere i valori dagli input
     let firstname = document.getElementById("firstname").value;
     let lastname = document.getElementById("lastname").value;
-    let username = document.getElementById("username").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("pass").value;
     let retypePassword = document.getElementById("confirm").value;
@@ -37,11 +36,6 @@ document.getElementById("registrationForm").addEventListener("submit", function 
         showError("lastname", "Il cognome è obbligatorio.");
         hasError = true;
     }
-  
-    /*if (username === "") {
-        showError("username", "Lo username è obbligatorio.");
-        hasError = true;
-    }*/
 
     if (email === "") {
         showError("email", "L'email è obbligatoria.");

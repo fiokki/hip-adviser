@@ -22,10 +22,6 @@
         $errors[] = "Il cognome è obbligatorio.";
     }
 
-    /*if(empty($user)) {
-        $errors[] = "Lo username è obbligatorio.";
-    }*/ 
-
     if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "L'indirizzo email è mancante o non è valido.";
     }
@@ -55,7 +51,11 @@
         mysqli_stmt_bind_param($stmt, "sssssi", $first, $last, $user, $email, $hashedPassword, $newsletter);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "Registrazione avvenuta con successo!";
+            echo "<script>
+                alert('Registrazione avvenuta con successo!');
+                window.location.href = '../login_form.php';
+            </script>";
+    exit();
         } else {
             echo "Errore durante la registrazione: " . mysqli_stmt_error($stmt);
         }

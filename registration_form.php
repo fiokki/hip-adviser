@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
-        <?php include_once 'head.php' ?>
+        <?php include_once 'layout-elements/head.php' ?>
         <title> Hip-Adviser | Registrazione </title>
         </head>
         <body>
-            <?php include_once 'header.php' ?>
+            <?php include_once 'layout-elements/header.php' ?>
             <div class="container">
                 <h2> Inizia a recensire i tuoi album preferiti! </h2>
 
@@ -51,8 +51,8 @@
             <div class="login-link">
                 <p>Se sei già iscritto, <a href="login_form.php">accedi!</a></p>
             </div>
-
-        <?php include_once 'footer.php' ?>
+        
+        <?php include_once 'layout-elements/footer.php' ?>
         <script src="js/validate_registration_form.js"></script>
         <script src="js/show_password.js"></script>
 

@@ -2,26 +2,37 @@
 require_once 'db/get_user_by_cookie.php';
 ?>
 <html lang="it">
-        <?php include_once 'head.php' ?>
+        <?php include_once 'layout-elements/head.php' ?>
         <title> Hip-Adviser </title>
         </head>
         <body>
-                <?php include_once 'header.php' ?>
-                <!-- Includere navbar -->
+                <?php 
+                include_once 'layout-elements/header.php';
+                include_once 'layout-elements/navbar.php';
+                ?>
 
                 <div class="filter-bar">
                                 <button id="filterButton">
-                                        <img src="images/filter-icon.png" alt="Filtra album" />
+                                        <img src="images/filter-icon.png" alt="Filtra" />
                                         <span class="filter-label">Ordina per:</span>
                                 </button>
 
                                 <div id="filter-menu" class="filter-menu">
-                                <ul>
-                                        <li><a href="#" onclick="applyFilter('release_date')">Data di Rilascio</a></li>
-                                        <li><a href="#" onclick="applyFilter('alphabetical')">Ordine alfabetico</a></li>
-                                        <li><a href="#" onclick="applyFilter('top_rated')">Numero di recensioni</a></li>
-                                        <li><a href="#" onclick="applyFilter('highest_rated')">Media voti</a></li>
-                                </ul>
+                                        <ul>
+                                                <?php
+                                                // I filtri cambiano in base se stiamo visualizzando gli album o gli artisti.
+                                                $page = isset($_GET['page']) ? $_GET['page'] : 'albums';
+                                                if ($page === 'albums') {
+                                                        echo '<li><a href="#" onclick="applyFilter(\'release_date\')">Data di Rilascio</a></li>';
+                                                        echo '<li><a href="#" onclick="applyFilter(\'alphabetical\')">Ordine alfabetico</a></li>';
+                                                        echo '<li><a href="#" onclick="applyFilter(\'top_rated\')">Numero di recensioni</a></li>';
+                                                        echo '<li><a href="#" onclick="applyFilter(\'highest_rated\')">Media voti</a></li>';
+                                                } elseif ($page === 'artists') {
+                                                        echo '<li><a href="#" onclick="applyFilter(\'most_albums\')">Artista con più album</a></li>';
+                                                        echo '<li><a href="#" onclick="applyFilter(\'alphabetical_artists\')">Ordine alfabetico</a></li>';
+                                                }
+                                                ?>
+                                        </ul>
                                 </div>
                 </div>
 
@@ -43,49 +54,75 @@ require_once 'db/get_user_by_cookie.php';
                         <?php
                         require_once 'db/config.php';
 
-                        // Di default vogliamo visualizzare gli album dal più recente. Se invece è applicato un filtro, visualizziamo in base a ciò che vuole l'utente
+                        // Di default vogliamo visualizzare gli album dal più recente. Se invece è applicato un filtro, visualizziamo in base a ciò che vuole l'utente.
+                        $page = isset($_GET['page']) ? $_GET['page'] : 'albums';
                         $filter = isset($_GET['filter']) ? $_GET['filter'] : 'release_date';
                         $order = isset($_GET['order']) ? $_GET['order'] : 'DESC';
                 
                         // Crea la query dinamica in base al filtro e all'ordinamento
-                        if ($filter === 'release_date') {
-                        $sql = "SELECT * FROM albums ORDER BY release_date $order LIMIT 200";
-                        } elseif ($filter === 'alphabetical') {
-                        $sql = "SELECT * FROM albums ORDER BY title $order LIMIT 200";
-                        } elseif ($filter === 'top_rated') {
-                        $sql = "SELECT albums.*, COUNT(reviews.id) AS review_count
-                                        FROM albums
-                                        LEFT JOIN reviews ON albums.id = reviews.album_id
-                                        GROUP BY albums.id
-                                        ORDER BY review_count $order LIMIT 200";
-                        } elseif ($filter === 'highest_rated') {
-                        $sql = "SELECT albums.*, AVG(reviews.rating) AS avg_rating
-                                        FROM albums
-                                        LEFT JOIN reviews ON albums.id = reviews.album_id
-                                        GROUP BY albums.id
-                                        ORDER BY avg_rating $order LIMIT 200";
+                        if ($page === 'albums'){
+                                if ($filter === 'release_date') {
+                                $sql = "SELECT * FROM albums ORDER BY release_date $order LIMIT 200";
+                                } elseif ($filter === 'alphabetical') {
+                                $sql = "SELECT * FROM albums ORDER BY title $order LIMIT 200";
+                                } elseif ($filter === 'top_rated') {
+                                $sql = "SELECT albums.*, COUNT(reviews.id) AS review_count
+                                                FROM albums
+                                                LEFT JOIN reviews ON albums.id = reviews.album_id
+                                                GROUP BY albums.id
+                                                ORDER BY review_count $order LIMIT 200";
+                                } elseif ($filter === 'highest_rated') {
+                                $sql = "SELECT albums.*, AVG(reviews.rating) AS avg_rating
+                                                FROM albums
+                                                LEFT JOIN reviews ON albums.id = reviews.album_id
+                                                GROUP BY albums.id
+                                                ORDER BY avg_rating $order LIMIT 200";
+                                }
                         }
+                        elseif ($page === 'artists'){
+                                if ($filter === 'most_albums') {
+                                        $sql = "SELECT artists.*, artists.artist_name, COUNT(albums.id) AS album_count
+                                                FROM artists
+                                                LEFT JOIN albums ON artists.id = albums.artist_id
+                                                GROUP BY artists.id
+                                                ORDER BY album_count $order LIMIT 200";
+                                } elseif ($filter === 'alphabetical_artists') {
+                                        $sql = "SELECT * FROM artists ORDER BY artist_name $order LIMIT 200";
+                                } else {
+                                        //Se non ci sono filtri applicati in artists, li mostriamo in ordine alfabetico di default
+                                        $sql = "SELECT * FROM artists ORDER BY artist_name ASC LIMIT 200";
+                                }
+                        }
+
                         $result = $conn->query($sql);
 
-                        // Se ci sono album, li mandiamo in output sottoforma di griglia
+                        // Se la query ritorna delle rows, le mandiamo in output sottoforma di griglia
                         if ($result->num_rows > 0) {
-                                echo '<div class="album-grid">';
+                                echo '<div class="' . $page . '-grid">';
                                 while ($row = $result->fetch_assoc()) {
+                                    if ($page === 'albums') {
                                         echo '<div class="album-item">';
                                         echo '<img src="' . $row['cover'] . '" alt="' . $row['title'] . '">';
                                         echo '<p>' . $row['title'] . '</p>';
                                         echo '</div>';
+
+                                    } elseif ($page === 'artists') {
+                                        echo '<div class="artist-item">';
+                                        echo '<img src="' . $row['photo'] . '" alt="' . $row['artist_name'] . '">';
+                                        echo '<p>' . $row['artist_name'] . '</p>';
+                                        echo '</div>';
+                                    }
                                 }
                                 echo '</div>';
-                        } else {
-                                echo '<div class="no-albums">Nessun album trovato.</div>';
+                            } else {
+                                echo '<div class="no-' . $page . '">Nessun ' . ($page === 'albums' ? 'album' : 'artista') . ' trovato.</div>';
                         }
 
                         $conn->close();
                         ?>
                 </div>
 
-                <?php include_once 'footer.php' ?>
-                <script src="js/filter_album.js"></script>
+                <?php include_once 'layout-elements/footer.php' ?>
+                <script src="js/filters.js"></script>
         </body>
 </html>
