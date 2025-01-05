@@ -16,14 +16,24 @@
     
     if(empty($first)) {
         $errors[] = "Il nome è obbligatorio.";
+    } elseif (strlen($first) > 30) {
+        $errors[] = "Il nome non può superare i 30 caratteri.";
     }
-    
+
     if(empty($last)) {
         $errors[] = "Il cognome è obbligatorio.";
+    } elseif (strlen($last) > 30) {
+        $errors[] = "Il cognome non può superare i 30 caratteri.";
+    }
+
+    if (strlen($user) > 20) {
+        $errors[] = "Il nome utente non può superare i 20 caratteri.";
     }
 
     if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "L'indirizzo email è mancante o non è valido.";
+    } elseif (strlen($email) > 50) {
+        $errors[] = "L'indirizzo email non può superare i 50 caratteri.";
     }
     
     if (empty($pass)) {
@@ -55,7 +65,7 @@
                 alert('Registrazione avvenuta con successo!');
                 window.location.href = '../login_form.php';
             </script>";
-    exit();
+            exit();
         } else {
             echo "Errore durante la registrazione: " . mysqli_stmt_error($stmt);
         }

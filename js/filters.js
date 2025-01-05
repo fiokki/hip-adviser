@@ -1,6 +1,6 @@
 // Oggetto per tenere traccia dello stato dell'ordinamento per ogni filtro
 let filterState = {
-    release_date: 'ASC',    
+    release_date: 'DESC',    
     alphabetical: 'DESC',     
     top_rated: 'ASC',       
     highest_rated: 'ASC',

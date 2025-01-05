@@ -51,7 +51,7 @@
             <div class="login-link">
                 <p>Se sei già iscritto, <a href="login_form.php">accedi!</a></p>
             </div>
-        
+
         <?php include_once 'layout-elements/footer.php' ?>
         <script src="js/validate_registration_form.js"></script>
         <script src="js/show_password.js"></script>

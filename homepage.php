@@ -38,15 +38,21 @@ require_once 'db/get_user_by_cookie.php';
 
                 <div class="homepage-container">
                         <div class="welcome">
-                                <?php
+                        <?php
                                 if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
-                                ?>
-                                        <!-- Messaggio per utenti loggati -->
-                                        Ciao <?php echo $_SESSION["user_id"]; ?>, inizia a recensire i tuoi album preferiti! 
-                                        <!-- Messaggio per utenti non loggati -->
-                                <?php
-                                } else  {
+                                        // Messaggio per utenti loggati
+                                        if ($page === 'artists') {
+                                        echo 'Ciao ' . $_SESSION["user_id"] . ', dai un\'occhiata agli artisti del nostro rooster!';
+                                        } else {
+                                        echo 'Ciao ' . $_SESSION["user_id"] . ', inizia a recensire i tuoi album preferiti!';
+                                        }
+                                } else {
+                                        // Messaggio per utenti non loggati
+                                        if ($page === 'artists') {
+                                        echo 'Unisciti alla nostra community di adviser, per rimanere sempre aggiornato sui tuoi artisti preferiti!';
+                                        } else {
                                         echo 'Unisciti alla nostra community di adviser, ed inizia a recensire i tuoi album preferiti!';
+                                        }
                                 }
                                 ?>
                         </div>
