@@ -8,8 +8,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
     $headerContent = '
         <div class="header">
             <div class="search">
-                <input type="text" placeholder="Cerca...">
-                <button type="submit"><img src="/~s5721355/images/search.png" alt="Search" /></button>
+                <form action="searchbar.php" method="POST">
+                    <input type="text" placeholder="Cerca..." name="search">
+                    <button type="submit"><img src="/~s5721355/images/search.png" alt="Search" /></button>
+                </form>
             </div>
             <div class="logo">
                 <a href="/~s5721355/homepage.php"> <img class="logo" src="/~s5721355/images/logo.png" alt="Hip-Adviser Logo"\> </a>
@@ -27,8 +29,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
     $headerContent = '
         <div class="header">
             <div class="search">
-                <input type="text" placeholder="Cerca..." name="cerca">
-                <button type="submit"><img src="/~s5721355/images/search.png" alt="Search" /></button>
+                <form action="searchbar.php" method="POST">
+                    <input type="text" placeholder="Cerca..." name="search">
+                    <button type="submit"><img src="/~s5721355/images/search.png" alt="Search" /></button>
+                </form>
             </div>
             <div class="logo">
                 <a href="/~s5721355/homepage.php"> <img class="logo" src="/~s5721355/images/logo.png" alt="Hip-Adviser Logo"\> </a>
