@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
             </div>
             <nav class="nav-links">
                 <ul>
-                    <li><a href="/~s5721355/layout-elements/work_in_progress.php"> <img src="/~s5721355/images/profile/profile.png" alt="Il tuo profilo" class="profile-logo" /> Il tuo profilo </a></li>
+                    <li><a href="/~s5721355/show_profile.php"> <img src="/~s5721355/images/profile/profile.png" alt="Il tuo profilo" class="profile-logo" /> Il tuo profilo </a></li>
                     <li><a href="/~s5721355/php/logout.php"> <img src="/~s5721355/images/profile/logout.png" alt="Logout" class="profile-logo" /> Logout </a></li>
                 </ul>
             </nav>

@@ -27,7 +27,7 @@
     }
 
     if (strlen($user) > 20) {
-        $errors[] = "Il nome utente non può superare i 20 caratteri.";
+        $errors[] = "Lo username non può superare i 20 caratteri.";
     }
 
     if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -61,10 +61,12 @@
         mysqli_stmt_bind_param($stmt, "sssssi", $first, $last, $user, $email, $hashedPassword, $newsletter);
 
         if (mysqli_stmt_execute($stmt)) {
+            echo "<p>Registrazionea vvenuta con successo. Sarai reindirizzato alla pagina di login tra 3 secondi.</p>";
             echo "<script>
-                alert('Registrazione avvenuta con successo!');
-                window.location.href = '../login_form.php';
-            </script>";
+                    setTimeout(function() {
+                        window.location.href = '../login_form.php';
+                    }, 3000);
+                  </script>";
             exit();
         } else {
             echo "Errore durante la registrazione: " . mysqli_stmt_error($stmt);
