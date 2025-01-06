@@ -1,21 +1,21 @@
 <?php
     require_once '../db/config.php';
+    include_once '../layout-elements/head.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $input = json_decode(file_get_contents("php://input"), true); // Decodifica dei dati JSON inviati dal frontend
-        $email = isset($input["email"]) ? filter_var(trim($input["email"]), FILTER_SANITIZE_EMAIL) : "";
-        $pass = isset($input["pass"]) ? trim($input["pass"]) : "";
-        $rememberMe = isset($input["rememberMe"]) ? $input["rememberMe"] : false;
+        $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+        $pass = trim($_POST["pass"]);
+        $rememberMe = isset($_POST["rememberMe"]) ? $_POST["rememberMe"] : false;
     }
 
     $errors = [];
     
     if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "L'indirizzo email è mancante o non è valido.";
+        $errors[] = "L'indirizzo email &eacute mancante o non &eacute valido.";
     }
     
     if (empty($pass)) {
-        $errors[] = "La password è mancante.";
+        $errors[] = "La password &eacute mancante.";
     }
 
     if (!empty($errors)) {
@@ -61,17 +61,33 @@
                 }
 
                 // Successo, invia una risposta positiva
-                echo json_encode(["success" => true, "message" => "Login effettuato con successo."]);
-            } else {
+                    echo "<p>Login avvenuto con successo. Sarai reindirizzato all'homepage tra 2 secondi.</p>";
+                    echo "<script>
+                            setTimeout(function() {
+                                window.location.href = '../homepage.php';
+                            }, 2000);
+                        </script>";
+                    exit();
+                } else {
                 // Password errata
-                $errors[] = "La password è errata.";
-                echo json_encode(["message" => $errors]);
-                exit();
+                    $errors[] = "La password &eacute errata. Sarai reindirizzato al modulo di login tra 2 secondi.";
+                    echo json_encode($errors);
+                    echo "<script>
+                        setTimeout(function() {
+                            window.location.href = '../login_form.php';
+                        }, 2000);
+                    </script>";
+                    exit();
             }
         } else {
             // Utente non trovato
-            $errors[] = "La email inserita non è corretta.";
-            echo json_encode(["message" => $errors]);
+            $errors[] = "La email inserita non &eacute corretta. Sarai reindirizzato al modulo di login tra 2 secondi.";
+            echo json_encode($errors);
+            echo "<script>
+            setTimeout(function() {
+                window.location.href = '../login_form.php';
+            }, 2000);
+            </script>";
             exit();
         }
 
@@ -79,7 +95,12 @@
     } else {
         // Errore nella preparazione della query
         $errors[] = "Errore del server. Riprovi più tardi.";
-        echo json_encode(["error" => $errors]);
+        echo json_encode($errors);
+        echo "<script>
+        setTimeout(function() {
+            window.location.href = '../login_form.php';
+        }, 2000);
+        </script>";
         exit();
     }
 

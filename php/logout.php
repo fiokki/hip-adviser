@@ -1,10 +1,13 @@
 <?php
     session_start();
+    include_once '../layout-elements/head.php';
 
     if (!isset($_SESSION["user_id"])) {
+        echo "<p>Non sei loggato! Sarai reindirizzato alla homepage tra 2 secondi.</p>";
         echo "<script>
-                alert('Non sei loggato!');
-                window.location.href = '../homepage.php';
+                setTimeout(function() {
+                    window.location.href = '../homepage.php';
+                }, 2000);
               </script>";
         exit();
     }
@@ -27,7 +30,12 @@
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
         } else {
-            echo "<script>alert('Errore nel database durante il logout.');</script>";
+            echo "<p>Errore nel database. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
+            echo "<script>
+                    setTimeout(function() {
+                        window.location.href = '../homepage.php';
+                    }, 2000);
+                  </script>";
         }
         
         mysqli_close($conn);

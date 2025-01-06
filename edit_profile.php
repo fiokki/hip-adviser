@@ -18,11 +18,11 @@ require_once 'db/get_user_by_cookie.php';
                 if (mysqli_num_rows($result) > 0) {
                     $user = mysqli_fetch_assoc($result);
                 } else {
-                    echo "<p>Utente non trovato. Sarai reindirizzato alla homepage tra 3 secondi.</p>";
+                    echo "<p>Utente non trovato. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
                     echo "<script>
                             setTimeout(function() {
                                 window.location.href = 'homepage.php';
-                            }, 3000);
+                            }, 2000);
                           </script>";
                     exit();
                 }
@@ -59,7 +59,7 @@ require_once 'db/get_user_by_cookie.php';
                             <div id="emailError" class="error"></div>
                         </div>
 
-                        <div class="profile-form-group">
+                        <div class="profile-checkbox-group">
                             <label for="newsletter">Iscritto alla Newsletter:</label>
                             <input type="checkbox" id="newsletter" name="newsletter" <?php echo $user['newsletter'] ? 'checked' : ''; ?>>
                         </div>

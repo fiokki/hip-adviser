@@ -14,7 +14,6 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     // Ottenere i valori dagli input
     let email = document.getElementById("email").value;
     let pass = document.getElementById("pass").value;
-    let rememberMe = document.getElementById("rememberMe").checked;
 
     clearError("email");
     clearError("password");
@@ -31,29 +30,13 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         hasError = true;
     } 
 
-    // Se non abbiamo riscontrato errori, controlliamo backend che l'utente sia registrato effettivamente, ed abbia inserito la password corretta
-    fetch("php/login.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, pass, rememberMe }) // Trasformiamo i dati in stringa JSON 
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Redirect alla homepage se il login ha successo
-            window.location.href = "homepage.php";
-        } else {
-            // Se il login non ha successo mostriamo il messaggio di errore, specifico (data.message) se presente, altrimenti 'credenziali errate'
-            showError("login", data.message || "Credenziali errate.")
-        }
-    })
-    .catch(error => {
-        console.error("Errore durante il login:", error);
-        showError("login", "Errore del server. Riprovi più tardi.")
-    });
-    
+    // Se ci sono errori, non inviare il modulo
+    if (hasError) {
+        return;
+    }
+
+    const form = document.getElementById("loginForm");
+    HTMLFormElement.prototype.submit.call(form);
 });
 
     

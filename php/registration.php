@@ -1,6 +1,7 @@
 <?php
     require_once '../db/config.php';
     require_once 'checkemail.php';
+    include_once '../layout-elements/head.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $first = trim($_POST["firstname"]);
@@ -15,29 +16,29 @@
     $errors = [];
     
     if(empty($first)) {
-        $errors[] = "Il nome è obbligatorio.";
+        $errors[] = "Il nome &eacute obbligatorio.";
     } elseif (strlen($first) > 30) {
-        $errors[] = "Il nome non può superare i 30 caratteri.";
+        $errors[] = "Il nome non puo' superare i 30 caratteri.";
     }
 
     if(empty($last)) {
-        $errors[] = "Il cognome è obbligatorio.";
+        $errors[] = "Il cognome &eacute obbligatorio.";
     } elseif (strlen($last) > 30) {
-        $errors[] = "Il cognome non può superare i 30 caratteri.";
+        $errors[] = "Il cognome non puo' superare i 30 caratteri.";
     }
 
     if (strlen($user) > 20) {
-        $errors[] = "Lo username non può superare i 20 caratteri.";
+        $errors[] = "Lo username non puo' superare i 20 caratteri.";
     }
 
     if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "L'indirizzo email è mancante o non è valido.";
+        $errors[] = "L'indirizzo email &eacute mancante o non è valido.";
     } elseif (strlen($email) > 50) {
-        $errors[] = "L'indirizzo email non può superare i 50 caratteri.";
+        $errors[] = "L'indirizzo email non puo' superare i 50 caratteri.";
     }
     
     if (empty($pass)) {
-        $errors[] = "La password è obbligatoria.";
+        $errors[] = "La password &eacute obbligatoria.";
     } elseif (strlen($pass) < 8) {
         $errors[] = "La password deve contenere almeno 8 caratteri.";
     }
@@ -46,7 +47,7 @@
     }
 
     if (isEmailRegistered($conn, $email)) {
-        $errors[] = "L'indirizzo email è già in uso.";
+        $errors[] = "L'indirizzo email &eacute già in uso.";
     }
 
     if (!empty($errors)) {
@@ -61,11 +62,11 @@
         mysqli_stmt_bind_param($stmt, "sssssi", $first, $last, $user, $email, $hashedPassword, $newsletter);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "<p>Registrazione avvenuta con successo. Sarai reindirizzato alla pagina di login tra 3 secondi.</p>";
+            echo "<p>Registrazione avvenuta con successo. Sarai reindirizzato alla pagina di login tra 2 secondi.</p>";
             echo "<script>
                     setTimeout(function() {
                         window.location.href = '../login_form.php';
-                    }, 3000);
+                    }, 2000);
                   </script>";
             exit();
         } else {
