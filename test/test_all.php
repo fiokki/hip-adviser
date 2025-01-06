@@ -14,7 +14,7 @@ require 'utils.php';
 /*                                            */
 /* DO NOT UPLOAD TEST FILES ON SAW21!         */
 /**********************************************/
-$baseurl = "https://saw21.dibris.unige.it/~s5721355";
+$baseurl = "https://saw.dibris.unige.it/~s5721355/php";
 
 echo "[+] Testing Registration - Login - Show Profile\n";
 
@@ -34,7 +34,7 @@ echo "---\n";
 echo "[-] Calling registration.php\n";
 
 register($email, $pass, $first_name, $last_name, $baseurl);
-/*
+
 echo "[-] Calling login.php\n";
 login($email, $pass, $baseurl);
 
@@ -80,4 +80,3 @@ echo check_correct_user($email, $first_name, $last_name, show_logged_user($baseu
     : "[*] Failed :)\n";
 
 echo "------------------------\n";
-*/

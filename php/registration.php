@@ -61,7 +61,7 @@
         mysqli_stmt_bind_param($stmt, "sssssi", $first, $last, $user, $email, $hashedPassword, $newsletter);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "<p>Registrazionea vvenuta con successo. Sarai reindirizzato alla pagina di login tra 3 secondi.</p>";
+            echo "<p>Registrazione avvenuta con successo. Sarai reindirizzato alla pagina di login tra 3 secondi.</p>";
             echo "<script>
                     setTimeout(function() {
                         window.location.href = '../login_form.php';

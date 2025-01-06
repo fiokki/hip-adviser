@@ -60,14 +60,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($stmt, "ssssii", $first, $last, $user, $email, $newsletter, $user_id);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo json_encode(["success" => true, "message" => "Update effettuato con successo."]);
+            echo "<p>Aggiornamento del profilo avvenuto con successo. Sarai reindirizzato al tuo profilo tra 3 secondi.</p>";
+            echo "<script>
+                    setTimeout(function() {
+                        window.location.href = '../show_profile.php';
+                    }, 3000);
+                  </script>";
+            exit();
         } else {
             echo json_encode(["error" => "Errore durante l'aggiornamento del profilo."]);
+            exit();
         }
 
         mysqli_stmt_close($stmt);
     } else {
         echo json_encode(["error" => "Errore nella preparazione della query."]);
+        exit();
     }
 
     mysqli_close($conn);

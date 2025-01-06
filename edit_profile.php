@@ -34,14 +34,13 @@ require_once 'db/get_user_by_cookie.php';
         
                 <div class="profile-container">
                     <h2>Modifica Le Tue Informazioni Personali</h2>
-                    <form id="updateForm" action="php/update_profile.php" method="POST">
+                    <form id="updateForm" action="php/update_profile.php" method="POST" onsubmit="return validateForm()">
 
                         <div class="profile-form-group">
                             <label for="firstname">Nome:</label>
                             <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($user['first_name']); ?>" required>
                             <div id="firstnameError" class="error"></div>
                         </div>
-
                         <div class="profile-form-group">
                             <label for="lastname">Cognome:</label>
                             <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
@@ -74,7 +73,47 @@ require_once 'db/get_user_by_cookie.php';
                 </div>
 
                 <?php require_once 'layout-elements/footer.php' ?>
-                <script src="js/validate_update_profile.js"></script>
+
+                <script>
+                function validateForm() {
+                    let isValid = true;
+                    document.getElementById('firstnameError').innerText = '';
+                    document.getElementById('lastnameError').innerText = '';
+                    document.getElementById('usernameError').innerText = '';
+                    document.getElementById('emailError').innerText = '';
+
+                    const firstname = document.getElementById('firstname').value;
+                    const lastname = document.getElementById('lastname').value;
+                    const username = document.getElementById('username').value;
+                    const email = document.getElementById('email').value;
+
+                    if (firstname.length > 30) {
+                        document.getElementById('firstnameError').innerText = 'Il nome non può superare i 30 caratteri.';
+                        isValid = false;
+                    }
+
+                    if (lastname.length > 30) {
+                        document.getElementById('lastnameError').innerText = 'Il cognome non può superare i 30 caratteri.';
+                        isValid = false;
+                    }
+
+                    if (username.length > 20) {
+                        document.getElementById('usernameError').innerText = 'Lo username non può superare i 20 caratteri.';
+                        isValid = false;
+                    }
+
+                    if (email.length > 50) {
+                        document.getElementById('emailError').innerText = 'L\'email non può superare i 50 caratteri.';
+                        isValid = false;
+                    } else if (!/\S+@\S+\.\S+/.test(email)) {
+                        document.getElementById('emailError').innerText = 'Il formato dell\'email non è valido.';
+                        isValid = false;
+                    }
+
+                    return isValid; // Non permette il submit
+                }
+            </script>
+
             <?php }
             else{
                 require_once 'no_permiss.php';
