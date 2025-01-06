@@ -138,6 +138,20 @@ il brano Respira, in collaborazione con Marracash, presenta invece per un campio
 ('Tony Effe', 'https://rapteratura.it/wp-content/uploads/2024/03/tony-effe-2-e1710951773538.jpg', 'Tony Effe, nome d\'arte di Nicolò Rapisarda (Roma, 17 maggio 1991), è un rapper italiano. Dopo l\'esperienza nella Dark Polo Gang, nel giugno del 2021 pubblica il suo primo album solista, Untouchable. Nel 2024 ottiene il grande successo con l\'Album Icon, piazzandosi per molte settimane ai primi posti nelle classifiche FIMI. D\'estate pubblica il singolo \"Sesso e Samba\" assieme alla cantante Gaia. Nel 2025 parteciperà al festival di Sanremo per la sua prima volta');
 
 
-('','',''),
-('','',''),
+('Massimo Pericolo','https://i.scdn.co/image/ab6761610000e5ebbcff54d6d50e5509211235a5','Massimo Pericolo, nome d\'arte di Alessandro Vanetti (Gallarate, 30 novembre 1992), è un rapper italiano.
+Nato a Gallarate e cresciuto tra Malgesso, Treviso, Catania, Gavirate e Laveno, si avvicina al rap da bambino grazie al film 8 mile di Eminem, che lo ispirato a scrivere i suoi primi testi provando a ricreare con i suoi amici le battle di freestyle della pellicola.
+Qualche anno più tardi conosce il rapper Kaso, che lavora coi ragazzi della provincia di Varese a progetti educativi e di formazione musicale, e può così registrare i suoi primissimi pezzi. Durante l\'adolescenza collabora con alcuni amici e realizza un demo di sette pezzi che però non verrà pubblicato.
+La sua carriera di rapper inizia con il nome Shinobi, ispirato al videogioco ninjesco Shinobido: Way of the Ninja. Successivamente adotta lo pseudonimo Skinny Bitch, registrando due feat (“Come la Torta” e “Otto sotto un testo”) nell\'album Cime di R-ep della SpumaCru, pubblicato nel 2011. In quel periodo si esibisce per la prima volta dal vivo in piccoli eventi a microfono aperto organizzati dal rapper Kaso, oltre a registrare una demo dal produttore varesino Mocce.
+Nel 2014 viene arrestato nell\'ambito dell\'operazione antidroga Scialla semper (che darà poi il titolo al suo album d\'esordio) e sconta due anni di detenzione tra carcere e arresti domiciliari. Durante questo periodo, cambia nome in Massimo Pericolo. Anche se non scriverà in carcere la svolta nel suo modo di fare rap arriverà proprio durante la detenzione, quando incoraggiato da un amico, inizia a scrivere anche della sua vita e del suo passato, adottando di fatto un approccio più conscious alla scrittura. Segue la pubblicazione su YouTube di brani con e senza video su beat editi ed inediti.
+Nel 2018 conosce i produttori Phra e Nic Sarno e firma per Pluggers e Lucky Beard Rec, pubblicando nel gennaio 2019 il singolo “7 Miliardi” che ottiene consensi unanimi tra pubblico, critica e gli altri colleghi e che anticipa il suo album d\'esordio Scialla semper.
+Nel 2021 pubblica il suo secondo album, SOLO TUTTO, e la sua autobiografia Il signore del bosco, edita Rizzoli.
+'),
+
+('Night Skinny','https://www.systemfailurewebzine.com/wp-content/uploads/2019/08/NightSkinny1-PhLeonardoScotti.jpg','Night Skinny (o The Night Skinny), nome d\'arte di Luca Pace (Termoli, 14 febbraio 1983), è un produttore e ingegnere del suono italiano.
+Inizialmente noto come Cee Mass, esordisce come Night Skinny nel 2010 pubblicando l\'album Metropolis Stepson.
+Nel febbraio del 2013 entra nel roster di Machete, per poi uscirne l\'anno successivo e pubblicare l\'album Zero Kills da indipendente. Il disco vanta la partecipazione di esponenti importanti del rap italiano (tra i quali Marracash e Noyz Narcos) ed ottiene un discreto successo, facendolo affermare Skinny tra i produttori più importanti della scena nazionale.
+I suoi successivi album, Pezzi (2017) e Mattoni (2019), si rivelano nuovamente dei successi, portandolo a collaborare anche con artisti di una nuova ondata di rap italiano, affermatisi in quel periodo.
+'),
+
+
 ('','',''),
