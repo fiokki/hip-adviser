@@ -61,7 +61,7 @@ require_once 'db/get_user_by_cookie.php';
                         require_once 'db/config.php';
 
                         // Di default vogliamo visualizzare gli album dal più recente. Se invece è applicato un filtro, visualizziamo in base a ciò che vuole l'utente.
-                        $page = isset($_GET['page']) ? $_GET['page'] : 'albums';
+                        // Abbiamo già ricavato il valore di 'page', quindi ricaviamo 'filter' e 'order', se sono impostati
                         $filter = isset($_GET['filter']) ? $_GET['filter'] : 'release_date';
                         $order = isset($_GET['order']) ? $_GET['order'] : 'DESC';
                 
@@ -100,12 +100,12 @@ require_once 'db/get_user_by_cookie.php';
                                 }
                         }
 
-                        $result = $conn->query($sql);
+                        $result = mysqli_query($conn, $sql);
 
                         // Se la query ritorna delle rows, le mandiamo in output sottoforma di griglia
-                        if ($result->num_rows > 0) {
+                        if (mysqli_num_rows($result) > 0) {
                                 echo '<div class="' . $page . '-grid">';
-                                while ($row = $result->fetch_assoc()) {
+                                while ($row = mysqli_fetch_assoc($result)) {
                                     if ($page === 'albums') {
                                         echo '<div class="album-item">';
                                         echo '<img src="' . $row['cover'] . '" alt="' . $row['title'] . '">';
@@ -124,7 +124,7 @@ require_once 'db/get_user_by_cookie.php';
                                 echo '<div class="no-' . $page . '">Nessun ' . ($page === 'albums' ? 'album' : 'artista') . ' trovato.</div>';
                         }
 
-                        $conn->close();
+                        mysqli_close($conn);
                         ?>
                 </div>
 

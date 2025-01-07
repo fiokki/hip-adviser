@@ -19,7 +19,13 @@
     }
 
     if (!empty($errors)) {
-        echo json_encode(["error" => $errors]);
+        echo "<p>" . implode("<br>", $errors) . "</p>";
+        echo "<p>Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../login_form.php';
+                }, 2000);
+              </script>";
         exit();
     }
 
@@ -70,8 +76,7 @@
                     exit();
                 } else {
                 // Password errata
-                    $errors[] = "La password &eacute errata. Sarai reindirizzato al modulo di login tra 2 secondi.";
-                    echo json_encode($errors);
+                    echo "<p>La password &eacute errata. Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
                     echo "<script>
                         setTimeout(function() {
                             window.location.href = '../login_form.php';
@@ -81,8 +86,7 @@
             }
         } else {
             // Utente non trovato
-            $errors[] = "La email inserita non &eacute corretta. Sarai reindirizzato al modulo di login tra 2 secondi.";
-            echo json_encode($errors);
+            echo "<p>La email inserita non &eacute corretta. Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
             echo "<script>
             setTimeout(function() {
                 window.location.href = '../login_form.php';
@@ -94,13 +98,12 @@
         mysqli_stmt_close($stmt);
     } else {
         // Errore nella preparazione della query
-        $errors[] = "Errore del server. Riprovi più tardi.";
-        echo json_encode($errors);
+        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
         echo "<script>
-        setTimeout(function() {
-            window.location.href = '../login_form.php';
-        }, 2000);
-        </script>";
+                setTimeout(function() {
+                    window.location.href = '../login_form.php';
+                }, 2000);
+              </script>";
         exit();
     }
 

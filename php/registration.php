@@ -51,7 +51,13 @@
     }
 
     if (!empty($errors)) {
-        echo json_encode(["errors" => $errors]);
+        echo "<p>" . implode("<br>", $errors) . "</p>";
+        echo "<p>Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../registration_form.php';
+                }, 2000);
+              </script>";
         exit();
     }
 
@@ -70,12 +76,24 @@
                   </script>";
             exit();
         } else {
-            echo "Errore durante la registrazione: " . mysqli_stmt_error($stmt);
+            echo "<p>Errore durante la registrazione. Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>";
+            echo "<script>
+                    setTimeout(function() {
+                        window.location.href = '../registration_form.php';
+                    }, 2000);
+                  </script>";
+            exit();
         }
 
         mysqli_stmt_close($stmt);
     } else{
-        echo "Errore nella preparazione della query: " . mysqli_error($conn);
+        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../registration_form.php';
+                }, 2000);
+              </script>";
+        exit();
     }
     
     mysqli_close($conn);

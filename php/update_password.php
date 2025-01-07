@@ -6,12 +6,12 @@ if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]){
     $user_id = $_SESSION['user_id'];
 } else {
     echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
-                    echo "<script>
-                            setTimeout(function() {
-                                window.location.href = '../homepage.php';
-                            }, 2000);
-                          </script>";
-                    exit();
+     echo "<script>
+            setTimeout(function() {
+                window.location.href = '../homepage.php';
+            }, 2000);
+    </script>";
+    exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,7 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!empty($errors)) {
-        echo json_encode(["errors" => $errors]);
+        echo "<p>" . implode("<br>", $errors) . "</p>";
+        echo "<p> Verrai reindirizzato alla pagina del tuo profilo tra 2 secondi. </p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../show_profile.php';
+                }, 2000);
+              </script>";
         exit();
     }
 
@@ -77,29 +83,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                   </script>";
                             exit();
                         } else {
-                            echo json_encode(["error" => "Errore durante l'aggiornamento della password."]);
-                            exit();
+                            echo "<p>Errore durante l'aggiornamento della password. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
+                            echo "<script>
+                                    setTimeout(function() {
+                                        window.location.href = '../show_profile.php';
+                                    }, 2000);
+                                  </script>";
                         }
                         mysqli_stmt_close($stmt);
                     }
             } else {
-                $errors[] = "Password attuale inserita non corretta.";
-                echo json_encode(["error" => "La vecchia password non &eacute corretta."]);
-                exit();
+                echo "<p>Password attuale inserita non corretta. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
+                echo "<script>
+                        setTimeout(function() {
+                            window.location.href = '../show_profile.php';
+                        }, 2000);
+                      </script>";
             }
         } else {
-            $errors[] = "Utente non trovato.";
-            echo json_encode(["error" => "Errore durante l'aggiornamento della password."]);
+            echo "<p>Utente non trovato. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
+            echo "<script>
+                    setTimeout(function() {
+                        window.location.href = '../show_profile.php';
+                    }, 2000);
+                  </script>";
             exit();
         }
         mysqli_stmt_close($stmt);
     } else {
-        $errors[] = "Errore del server. Riprovi piu' tardi.";
-        echo json_encode(["error" => $errors]);
+        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../show_profile.php';
+                }, 2000);
+              </script>";
         exit();
     }
     
     mysqli_close($conn);
 
+}
+else{
+    echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
+    echo "<script>
+        setTimeout(function() {
+            window.location.href = '../homepage.php';
+        }, 2000);
+    </script>";
+    exit();
 }
 ?>

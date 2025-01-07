@@ -4,28 +4,28 @@
 
     $search = trim($_POST["search"]);
 
-    $query = "SELECT 
+    $query = "SELECT
                 'artist' AS type,
                 artists.artist_name AS name,
                 artists.photo AS img_url
-            FROM 
+            FROM
                 artists
-            WHERE 
+            WHERE
                 artists.artist_name LIKE CONCAT('%', ?, '%')
 
             UNION
 
-            SELECT 
+            SELECT
                 'album' AS type,
                 albums.title AS name,
                 albums.cover AS img_url
-            FROM 
+            FROM
                 albums
-            LEFT JOIN 
-                artists 
-            ON 
+            LEFT JOIN
+                artists
+            ON
                 albums.artist_id = artists.id
-            WHERE 
+            WHERE
                 artists.artist_name LIKE CONCAT('%', ?, '%')
                 OR albums.title LIKE CONCAT('%', ?, '%')";
 

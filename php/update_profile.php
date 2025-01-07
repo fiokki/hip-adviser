@@ -6,12 +6,12 @@ if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]){
     $user_id = $_SESSION['user_id'];
 } else {
     echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
-                    echo "<script>
-                            setTimeout(function() {
-                                window.location.href = '../homepage.php';
-                            }, 2000);
-                          </script>";
-                    exit();
+    echo "<script>
+        setTimeout(function() {
+            window.location.href = '../homepage.php';
+        }, 2000);
+    </script>";
+    exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -50,7 +50,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!empty($errors)) {
-        echo json_encode(["errors" => $errors]);
+        echo "<p>" . implode("<br>", $errors) . "</p>";
+        echo "<p> Sarai reindirizzato alla pagina del tuo profilo tra 2 secondi. </p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../show_profile.php';
+                }, 2000);
+              </script>";
         exit();
     }
 
@@ -69,17 +75,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </script>";
             exit();
         } else {
-            echo json_encode(["error" => "Errore durante l'aggiornamento del profilo."]);
+            echo "<p>Errore durante l'aggiornamento del profilo. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
+            echo "<script>
+                    setTimeout(function() {
+                        window.location.href = '../show_profile.php';
+                    }, 2000);
+                  </script>";
             exit();
         }
 
         mysqli_stmt_close($stmt);
     } else {
-        echo json_encode(["error" => "Errore nella preparazione della query."]);
+        echo "<p>Errore nella preparazione della query. Sarai reindirizzato al tuo profilo tra 2 secondi. </p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../show_profile.php';
+                }, 2000);
+              </script>";
         exit();
     }
 
     mysqli_close($conn);
+}
+else{
+    echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
+    echo "<script>
+        setTimeout(function() {
+            window.location.href = '../homepage.php';
+        }, 2000);
+    </script>";
+    exit();
 }
 
 function isEmailAvailable($conn, $email, $user_id) {
