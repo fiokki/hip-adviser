@@ -108,14 +108,18 @@ require_once 'db/get_user_by_cookie.php';
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     if ($page === 'albums') {
                                         echo '<div class="album-item">';
+                                        echo '<a href="album.php?id=' . $row['id'] . '">';
                                         echo '<img src="' . $row['cover'] . '" alt="' . $row['title'] . '">';
                                         echo '<p>' . $row['title'] . '</p>';
+                                        echo '</a>';
                                         echo '</div>';
 
                                     } elseif ($page === 'artists') {
                                         echo '<div class="artist-item">';
+                                        echo '<a href="artist.php?id=' . $row['id'] . '">';
                                         echo '<img src="' . $row['photo'] . '" alt="' . $row['artist_name'] . '">';
                                         echo '<p>' . $row['artist_name'] . '</p>';
+                                        echo '</a>';
                                         echo '</div>';
                                     }
                                 }
