@@ -8,7 +8,7 @@ require_once 'db/get_user_by_cookie.php';
     <body>
         <?php include_once 'layout-elements/header.php'; ?>
         <?php
-            $search = isset($_POST["search"]) ? trim($_POST["search"]) : '';
+            $search = isset($_GET["search"]) ? trim($_GET["search"]) : '';
 
             $query = "SELECT
             'artist' AS type,

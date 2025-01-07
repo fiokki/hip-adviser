@@ -8,7 +8,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
     $headerContent = '
         <div class="header">
             <div class="search">
-                <form action="searchbar.php" method="POST">
+                <form action="searchbar.php" method="GET">
                     <input type="text" placeholder="Cerca..." name="search">
                     <button type="submit"><img src="/~s5721355/images/search.png" alt="Search" /></button>
                 </form>
@@ -29,7 +29,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
     $headerContent = '
         <div class="header">
             <div class="search">
-                <form action="searchbar.php" method="POST">
+                <form action="searchbar.php" method="GET">
                     <input type="text" placeholder="Cerca..." name="search">
                     <button type="submit"><img src="/~s5721355/images/search.png" alt="Search" /></button>
                 </form>
