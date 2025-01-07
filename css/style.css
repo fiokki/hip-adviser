@@ -506,7 +506,7 @@ footer .socials img.social-logo {
   margin-bottom: -20px;
 }
 
-.albums-grid, .artists-grid{
+.albums-grid, .artists-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -521,6 +521,11 @@ footer .socials img.social-logo {
   text-align: center;
   padding: 15px;
   transition: transform 0.3s ease;
+}
+
+.album-item a, .artist-item a {
+    color: #ffb101;
+    text-decoration: none;
 }
 
 .album-item:hover, .artist-item:hover{

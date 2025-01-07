@@ -27,27 +27,20 @@
         $errors[] = "Il cognome non puo' superare i 30 caratteri.";
     }
 
-    if (strlen($user) > 20) {
-        $errors[] = "Lo username non puo' superare i 20 caratteri.";
-    }
-
     if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "L'indirizzo email &eacute mancante o non è valido.";
     } elseif (strlen($email) > 50) {
         $errors[] = "L'indirizzo email non puo' superare i 50 caratteri.";
+    } elseif (isEmailRegistered($conn, $email)) {
+        $errors[] = "L'indirizzo email &eacute già in uso.";
     }
     
     if (empty($pass)) {
         $errors[] = "La password &eacute obbligatoria.";
     } elseif (strlen($pass) < 8) {
         $errors[] = "La password deve contenere almeno 8 caratteri.";
-    }
-    if ($pass !== $conf) {
+    } elseif ($pass !== $conf) {
         $errors[] = "Le password non corrispondono.";
-    }
-
-    if (isEmailRegistered($conn, $email)) {
-        $errors[] = "L'indirizzo email &eacute già in uso.";
     }
 
     if (!empty($errors)) {
@@ -56,6 +49,16 @@
         echo "<script>
                 setTimeout(function() {
                     window.location.href = '../registration_form.php';
+                }, 2000);
+              </script>";
+        exit();
+    }
+
+    if (strlen($user) > 20) {
+        echo "<p>Lo username non puo' superare i 20 caratteri.</p>";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = '../login_form.php';
                 }, 2000);
               </script>";
         exit();
