@@ -30,7 +30,7 @@
     }
 
     // Controllo delle credenziali
-    $query = "SELECT id, password FROM users WHERE email = ?";
+    $query = "SELECT id, password, first_name, last_name, user_name, role FROM users WHERE email = ?";
     $stmt = mysqli_prepare($conn, $query);
 
     if ($stmt) {
@@ -39,13 +39,17 @@
         mysqli_stmt_store_result($stmt);
 
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $userId, $hashedPassword);
+            mysqli_stmt_bind_result($stmt, $userId, $hashedPassword, $firstName, $lastName, $userName, $role);
             mysqli_stmt_fetch($stmt);
         
             if (password_verify($pass, $hashedPassword)) {
                 // Avvio della sessione
                 session_start();
                 $_SESSION["user_id"] = $userId;
+                $_SESSION["first_name"] = $firstName;
+                $_SESSION["last_name"] = $lastName;
+                $_SESSION["user_name"] = $userName;
+                $_SESSION["role"] = $role;
 
                 // Gestione "remember me"
                 if ($rememberMe) {

@@ -19,7 +19,11 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id']) {
             <nav class="nav-links">
                 <ul>
                     <li><a href="/~s5721355/show_profile.php"> <img src="/~s5721355/images/profile/profile.png" alt="Il tuo profilo" class="profile-logo" /> Il tuo profilo </a></li>
-                    <li><a href="/~s5721355/php/logout.php"> <img src="/~s5721355/images/profile/logout.png" alt="Logout" class="profile-logo" /> Logout </a></li>
+                    <li><a href="/~s5721355/php/logout.php"> <img src="/~s5721355/images/profile/logout.png" alt="Logout" class="profile-logo" /> Logout </a></li>';
+                    if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+                        $headerContent .= ' <li><a href="/~s5721355/admin/admin_area.php"> <img src="/~s5721355/images/profile/admin.png" alt="Logout" class="profile-logo" />Area Amministrativa</a></li>';
+                    }
+    $headerContent .= '
                 </ul>
             </nav>
         </div>

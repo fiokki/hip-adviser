@@ -616,6 +616,101 @@ footer .socials img.social-logo {
   font-size: 1.5em;
 }
 
+.admin-dashboard {
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #373838;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #ffb101;
+}
+
+.admin-dashboard h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.dashboard-actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.dashboard-actions h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #ffb101;
+  margin-bottom: 20px;
+}
+
+.dashboard-actions button {
+  display: inline-block;
+  background-color: #ffb101;
+  color: #1d1d1d;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+.dashboard-actions button:hover {
+  background-color: #e2a109;
+}
+
+.dashboard-actions button:disabled {
+  background-color: #282828;
+  cursor: not-allowed;
+}
+
+.statistics-container {
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #373838;
+  color: #ffb101;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; 
+}
+
+.statistics h1 {
+  font-size: 60px; 
+  margin-bottom: 20px;
+
+}
+
+.statistics h2, .top-3 h2 {
+  font-size: 20px; 
+}
+
+.statistics ul,
+.top-3 ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center; 
+}
+
+.statistics li,
+.top-3 li {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.top-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.top-3 li {
+  margin: 0 15px;
+}
+
 /* Responsive design, per schermi più piccoli */
 @media (max-width: 1000px) { 
   .albums-grid, .artists-grid {

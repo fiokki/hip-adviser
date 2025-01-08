@@ -3,7 +3,7 @@ session_start();
 require_once 'config.php';
 
 function getUserByCookie($conn, $cookie) {
-    $query = "SELECT id FROM users WHERE cookie_id = ? AND cookie_expiry > NOW()";
+    $query = "SELECT id, first_name, last_name, user_name, role FROM users WHERE cookie_id = ? AND cookie_expiry > NOW()";
     $stmt = mysqli_prepare($conn, $query);
     if($stmt) {
         mysqli_stmt_bind_param($stmt, "s", $cookie);
@@ -20,10 +20,14 @@ function getUserByCookie($conn, $cookie) {
 
 if (!isset($_SESSION["user_id"]) && isset($_COOKIE['remember_me'])) {
     $cookie = $_COOKIE['remember_me'];
-    $user_id = getUserByCookie($conn, $cookie);
+    $user = getUserByCookie($conn, $cookie);
 
     if ($user_id) {
-        $_SESSION["user_id"] = $user_id;
+        $_SESSION["user_id"] = $user['id'];
+        $_SESSION["first_name"] = $user['first_name'];
+        $_SESSION["last_name"] = $user['last_name'];
+        $_SESSION["user_name"] = $user['user_name'];
+        $_SESSION["role"] = $user['role'];
     }
 }
 

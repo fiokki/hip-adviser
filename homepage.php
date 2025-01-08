@@ -42,9 +42,9 @@ require_once 'db/get_user_by_cookie.php';
                                 if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
                                         // Messaggio per utenti loggati
                                         if ($page === 'artists') {
-                                        echo 'Ciao ' . $_SESSION["user_id"] . ', dai un\'occhiata agli artisti del nostro rooster!';
+                                                echo 'Ciao ' . (isset($_SESSION["user_name"]) && $_SESSION["user_name"] ? $_SESSION["user_name"] : $_SESSION["first_name"]) . ', dai un\'occhiata agli artisti del nostro rooster!';
                                         } else {
-                                        echo 'Ciao ' . $_SESSION["user_id"] . ', inizia a recensire i tuoi album preferiti!';
+                                                echo 'Ciao ' . (isset($_SESSION["user_name"]) && $_SESSION["user_name"] ? $_SESSION["user_name"] : $_SESSION["first_name"]) . ', inizia a recensire i tuoi album preferiti!';
                                         }
                                 } else {
                                         // Messaggio per utenti non loggati
