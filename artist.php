@@ -45,7 +45,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             echo '<img src="' . htmlspecialchars($photo) . '" alt="' . htmlspecialchars($artist_name) . ' photo">';
             echo '<div class="artist-bio-container">';
                 echo '<h2>Biografia</h2>';
-                echo '<p>' . htmlspecialchars($bio) . '</p>';
+                echo '<p>' . nl2br(htmlspecialchars($bio)) . '</p>';
             echo '</div>';
         echo '</div>';
     }
