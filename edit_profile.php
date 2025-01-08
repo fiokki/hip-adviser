@@ -116,7 +116,7 @@ require_once 'db/get_user_by_cookie.php';
 
             <?php }
             else{
-                require_once 'no_permiss.php';
+                require_once 'layout-elements/no_permiss.php';
             }?>
         </body>
 </html>

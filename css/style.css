@@ -554,6 +554,67 @@ footer .socials img.social-logo {
   margin-top: 20px; 
 }
 
+.artist-container {
+  text-align: center;
+  margin: 20px auto;
+  width: 60%;
+  border: 1px solid #1d1d1d;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #373838;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.artist-container h1 {
+  color: #ffb101;
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.artist-container img {
+  width: 300px; 
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #1d1d1d;
+  margin-bottom: 20px;
+}
+
+.artist-bio-container {
+  border: 1px solid #1d1d1d;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #373838;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.artist-bio-container h2 {
+  color: #ffb101;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.artist-bio-container p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.albums-container {
+  text-align: center;
+  margin: 20px auto;
+  width: 80%;
+  border: 1px solid #1d1d1d;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #373838;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.albums-container h2 {
+  color: #ffb101;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
 
 /* Responsive design, per schermi più piccoli */
 @media (max-width: 1000px) { 
