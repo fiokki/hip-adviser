@@ -28,7 +28,7 @@ require_once 'db/get_user_by_cookie.php';
                                                         <li><a href="#" onclick="applyFilter(\'top_rated\')"> Numero di recensioni </a></li>
                                                         <li><a href="#" onclick="applyFilter(\'highest_rated\')"> Media voti </a></li>';
                                                 } elseif ($page === 'artists') {
-                                                        echo '<li><a href="#" onclick="applyFilter(\'most_albums\')"> Artista con più album </a></li>
+                                                        echo '<li><a href="#" onclick="applyFilter(\'most_albums\')"> Album rilasciati </a></li>
                                                         <li><a href="#" onclick="applyFilter(\'alphabetical_artists\')"> Ordine alfabetico </a></li>';
                                                 }
                                                 ?>

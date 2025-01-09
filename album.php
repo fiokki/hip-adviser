@@ -5,7 +5,7 @@
     
     if (isset($_GET['id']) && !empty($_GET['id'])) {
         $album_id = $_GET['id'];
-        $album_query = "SELECT albums.id, title, release_date, cover, link, artist_id, artist_name FROM albums LEFT JOIN artists ON albums.artist_id=artists.id WHERE albums.id = ?";
+        $album_query = "SELECT albums.id, title, release_date, cover, link, artist_id, artist_name, photo FROM albums LEFT JOIN artists ON albums.artist_id=artists.id WHERE albums.id = ?";
         $reviews_query = "SELECT reviews.id, rating, comment, reviews.created_at, user_name, first_name, last_name FROM reviews LEFT JOIN users ON users.id = user_id WHERE album_id = ?";
         $avg_rating_query = "SELECT COUNT(*) as n_rec, AVG(rating) as avg FROM reviews WHERE album_id = ?";
         $album_stmt = mysqli_prepare($conn, $album_query);
@@ -18,7 +18,7 @@
             mysqli_stmt_bind_param($album_stmt, 'i', $album_id);
             mysqli_stmt_execute($album_stmt);
             mysqli_stmt_store_result($album_stmt);
-            mysqli_stmt_bind_result($album_stmt, $album_id, $title, $release_date, $cover, $link, $artist_id, $artist_name);
+            mysqli_stmt_bind_result($album_stmt, $album_id, $title, $release_date, $cover, $link, $artist_id, $artist_name, $artist_photo);
             mysqli_stmt_fetch($album_stmt);
             mysqli_stmt_close($album_stmt);
 
@@ -63,14 +63,20 @@
                       </script>";
                 exit();
             } else {
+                echo '<div class="flex-container">';
                 echo '<div class="album-container">
                         <span class="album-info">
                         <img src="' . htmlspecialchars($cover) . '" alt="' . htmlspecialchars($title) . ' cover">
                         <h1>' . htmlspecialchars($title) . '</h1>
+                        <div class="artist-info">
+                            <img src="' . htmlspecialchars($artist_photo) . '" alt="' . htmlspecialchars($artist_name) . '">
+                            <h3>' .   htmlspecialchars($artist_name) . '</h3>
+                        </div>
                         <h3> Rilasciato il: ' . htmlspecialchars(formatDate($release_date)) . '</h3>
                         </span>
                         <span class="avg-ratings">
-                            <h2> Valutazioni dei nostri utenti:' . $avg_rating . '/5 </h2>
+                            <button class="spotify-button" onclick="window.open(\'' . htmlspecialchars($link) . '\', \'_blank\')">Ascoltalo su Spotify</button>
+                            <h2> Valutazioni dei nostri utenti:' . round($avg_rating, 1) . '/5 </h2>
                             <h3> Basato su ' . $n_rec . ' valutazioni.</h3>
                         </span>
                     </div>';
@@ -79,7 +85,6 @@
                         <h2>Lascia la tua recensione</h2>
                         <form id="review">
                             <div class="rating">
-                                <!-- Notice that the stars are in reverse order -->
                                 <input type="radio" id="star5" name="rating" value="5">
                                 <label for="star5">&#9733;</label>
                                 <input type="radio" id="star4" name="rating" value="4">
@@ -97,13 +102,14 @@
                             </div>
                             <input type="submit" class="submit-btn" value="Invia recensione">
                         </form>
-                        </div>';
+                        </div>
+                </div>';
                 if (mysqli_num_rows($reviews_result) === 0){
                     echo '<div class="no-reviews"> Non ci sono valutazioni per questo album; Potresti essere il primo a valutarlo! </div>';
                 }
                 else {
                     echo '<div class="reviews-container">
-                        <h2> Le valutazioni dei nostri utenti: </h2>';
+                        <h2 class="reviews-title"> Le valutazioni dei nostri utenti: </h2>';
                     while ($row = mysqli_fetch_assoc($reviews_result)){
                         $displayed_name = $row['user_name'] != null ? $row['user_name'] : $row['first_name'] . ' ' . $row['last_name'];
                         echo '<div class="review-item">

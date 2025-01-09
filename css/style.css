@@ -757,45 +757,129 @@ footer .socials img.social-logo {
 .top-3 li {
   margin: 0 15px;
 }
+.flex-container {
+  display: flex;
+  justify-content: space-between; 
+  width: 90%;
+  margin: 20px auto;
+}
+
+.album-container {
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #373838;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #ffb101;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 2%;
+}
+
+.album-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.album-info img {
+  width: 300px;
+  height: auto;
+  align-self: start;
+  margin-bottom: 10px;
+}
+
+.album-info h1, .album-info h3 {
+  margin: 5px 0;
+}
+
+.artist-info {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.artist-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.avg-ratings {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avg-ratings h2, .avg-ratings h3 {
+  margin: 5px 0;
+}
+
+.spotify-button {
+  background-color: #1DB954;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
 .review-form {
-	max-width: 400px;
-	margin: 0 auto;
+  width: 80%;
+  background-color: #373838;
+  padding: 20px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #ffb101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 2%;
 }
 
 .rating {
-	margin-bottom: 20px;
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: flex-end;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  color: whitesmoke;
 }
 
 .rating input {
-	display: none;
+  display: none;
 }
 
 .rating label {
-	font-size: 24px;
-	cursor: pointer;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .rating label:hover,
 .rating label:hover ~ label {
-	color: orange;
+  color: orange;
 }
 
 .rating input:checked ~ label {
-	color: orange;
+  color: orange;
 }
 
 .comment {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .comment textarea {
-	width: 100%;
-	height: 100px;
-	resize: none;
+  width: 500px;
+  height: 300px; 
+  resize: none;
 }
 
 .review-form input[type="submit"] {
@@ -810,8 +894,29 @@ footer .socials img.social-logo {
   text-transform: uppercase;
 }
 
-.review-form input[type="submit"]:hover {
-  background-color: #e2a109;
+.reviews-container {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #373838;
+  padding: 20px;
+  border-radius: 10px;
+  color: whitesmoke;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.reviews-title {
+  display: block;
+  text-align: center; 
+  margin-bottom: 20px;
+}
+
+.review-item {
+  background-color: #ffb101;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 
