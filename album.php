@@ -80,8 +80,8 @@
                             <h3> Basato su ' . $n_rec . ' valutazioni.</h3>
                         </span>
                     </div>';
-                // review form
-                echo '<div class="review-form">
+
+                    echo '<div class="review-form">
                         <h2>Lascia la tua recensione</h2>
                         <form id="review">
                             <div class="rating">
@@ -105,20 +105,22 @@
                         </div>
                 </div>';
                 if (mysqli_num_rows($reviews_result) === 0){
-                    echo '<div class="no-reviews"> Non ci sono valutazioni per questo album; Potresti essere il primo a valutarlo! </div>';
+                    echo '<div class="no-reviews"> Non ci sono valutazioni per questo album. Potresti essere il primo a valutarlo! </div>';
                 }
                 else {
                     echo '<div class="reviews-container">
-                        <h2 class="reviews-title"> Le valutazioni dei nostri utenti: </h2>';
-                    while ($row = mysqli_fetch_assoc($reviews_result)){
-                        $displayed_name = $row['user_name'] != null ? $row['user_name'] : $row['first_name'] . ' ' . $row['last_name'];
-                        echo '<div class="review-item">
-                                <h4>' . $displayed_name . '<h4>
-                                <p>' . $row['created_at'] . '</p>
-                                <p>' . $row['rating'] . '/5 </p>
-                                <p>' . $row['comment'] . '</p>
-                                </div>';
-                    }
+                        <h2 class="reviews-title"> Le valutazioni dei nostri utenti: </h2>
+                        <div class="review-grid">';
+                            while ($row = mysqli_fetch_assoc($reviews_result)) {
+                                $displayed_name = $row['user_name'] != null ? $row['user_name'] : $row['first_name'] . ' ' . $row['last_name'];
+                                echo '<div class="review-item">
+                                        <p><strong>Nome:</strong> ' . htmlspecialchars($displayed_name) . '</p>
+                                        <p><strong>Voto:</strong> ' . htmlspecialchars($row['rating']) . '/5 </p>
+                                        <p><strong>Data:</strong> ' . htmlspecialchars($row['created_at']) . '</p>
+                                        <p><strong>Commento:</strong> ' . htmlspecialchars($row['comment']) . '</p>
+                                    </div>';
+                            }
+                        echo '</div>';
                     echo '</div>';
                 }
             }
@@ -127,9 +129,13 @@
 
 
             function formatDate($date) {
+                // Localizzazione italiana per la data
+                setlocale(LC_TIME, 'it_IT.UTF-8', 'it_IT', 'it', 'ita');
+                
                 $timestamp = date_create_from_format('Y-m-d', $date);
                 if ($timestamp) {
-                    return $timestamp = date_format($timestamp, 'F j, Y');
+                    // Formatta la data nel formato '13 Dicembre 2024'
+                    return strftime('%d %B %Y', $timestamp->getTimestamp());
                 } else {
                     return "Formato non valido";
                 }
