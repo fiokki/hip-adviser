@@ -5,8 +5,8 @@ session_start();
 if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]){
     $user_id = $_SESSION['user_id'];
 } else {
-    echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
-     echo "<script>
+    echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>
+     <script>
             setTimeout(function() {
                 window.location.href = '../homepage.php';
             }, 2000);
@@ -44,9 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!empty($errors)) {
-        echo "<p>" . implode("<br>", $errors) . "</p>";
-        echo "<p> Verrai reindirizzato alla pagina del tuo profilo tra 2 secondi. </p>";
-        echo "<script>
+        echo "<p>" . implode("<br>", $errors) . "</p>
+        <p> Verrai reindirizzato alla pagina del tuo profilo tra 2 secondi. </p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../show_profile.php';
                 }, 2000);
@@ -75,16 +75,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($updateStmt) {
                         mysqli_stmt_bind_param($updateStmt, "si", $hashedPassword, $user_id);
                         if (mysqli_stmt_execute($updateStmt)) {
-                            echo "<p>Aggiornamento della password avvenuto con successo. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
-                            echo "<script>
+                            echo "<p>Aggiornamento della password avvenuto con successo. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
+                            <script>
                                     setTimeout(function() {
                                         window.location.href = '../show_profile.php';
                                     }, 2000);
                                   </script>";
                             exit();
                         } else {
-                            echo "<p>Errore durante l'aggiornamento della password. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
-                            echo "<script>
+                            echo "<p>Errore durante l'aggiornamento della password. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
+                            <script>
                                     setTimeout(function() {
                                         window.location.href = '../show_profile.php';
                                     }, 2000);
@@ -93,16 +93,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         mysqli_stmt_close($stmt);
                     }
             } else {
-                echo "<p>Password attuale inserita non corretta. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
-                echo "<script>
+                echo "<p>Password attuale inserita non corretta. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
+                <script>
                         setTimeout(function() {
                             window.location.href = '../show_profile.php';
                         }, 2000);
                       </script>";
             }
         } else {
-            echo "<p>Utente non trovato. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
-            echo "<script>
+            echo "<p>Utente non trovato. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
+            <script>
                     setTimeout(function() {
                         window.location.href = '../show_profile.php';
                     }, 2000);
@@ -111,8 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         mysqli_stmt_close($stmt);
     } else {
-        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
-        echo "<script>
+        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../show_profile.php';
                 }, 2000);
@@ -124,8 +124,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 else{
-    echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
-    echo "<script>
+    echo "<p>Si è verificato un errore. Sarai reindirizzato alla homepage tra 2 secondi.</p>
+    <script>
         setTimeout(function() {
             window.location.href = '../homepage.php';
         }, 2000);

@@ -3,8 +3,8 @@
     include_once '../layout-elements/head.php';
 
     if (!isset($_SESSION["user_id"])) {
-        echo "<p>Non sei loggato! Sarai reindirizzato alla homepage tra 2 secondi.</p>";
-        echo "<script>
+        echo "<p>Non sei loggato! Sarai reindirizzato alla homepage tra 2 secondi.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../homepage.php';
                 }, 2000);
@@ -30,8 +30,8 @@
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
         } else {
-            echo "<p>Errore nel database. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
-            echo "<script>
+            echo "<p>Errore nel database. Sarai reindirizzato alla homepage tra 2 secondi.</p>
+            <script>
                     setTimeout(function() {
                         window.location.href = '../homepage.php';
                     }, 2000);

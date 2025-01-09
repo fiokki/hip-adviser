@@ -23,13 +23,13 @@ require_once 'db/get_user_by_cookie.php';
                                                 // I filtri cambiano in base se stiamo visualizzando gli album o gli artisti.
                                                 $page = isset($_GET['page']) ? $_GET['page'] : 'albums';
                                                 if ($page === 'albums') {
-                                                        echo '<li><a href="#" onclick="applyFilter(\'release_date\')">Data di Rilascio</a></li>';
-                                                        echo '<li><a href="#" onclick="applyFilter(\'alphabetical\')">Ordine alfabetico</a></li>';
-                                                        echo '<li><a href="#" onclick="applyFilter(\'top_rated\')">Numero di recensioni</a></li>';
-                                                        echo '<li><a href="#" onclick="applyFilter(\'highest_rated\')">Media voti</a></li>';
+                                                        echo '<li><a href="#" onclick="applyFilter(\'release_date\')"> Data di Rilascio </a></li>
+                                                        <li><a href="#" onclick="applyFilter(\'alphabetical\')"> Ordine alfabetico </a></li>
+                                                        <li><a href="#" onclick="applyFilter(\'top_rated\')"> Numero di recensioni </a></li>
+                                                        <li><a href="#" onclick="applyFilter(\'highest_rated\')"> Media voti </a></li>';
                                                 } elseif ($page === 'artists') {
-                                                        echo '<li><a href="#" onclick="applyFilter(\'most_albums\')">Artista con più album</a></li>';
-                                                        echo '<li><a href="#" onclick="applyFilter(\'alphabetical_artists\')">Ordine alfabetico</a></li>';
+                                                        echo '<li><a href="#" onclick="applyFilter(\'most_albums\')"> Artista con più album </a></li>
+                                                        <li><a href="#" onclick="applyFilter(\'alphabetical_artists\')"> Ordine alfabetico </a></li>';
                                                 }
                                                 ?>
                                         </ul>
@@ -42,7 +42,7 @@ require_once 'db/get_user_by_cookie.php';
                                 if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
                                         // Messaggio per utenti loggati
                                         if ($page === 'artists') {
-                                                echo 'Ciao ' . (isset($_SESSION["user_name"]) && $_SESSION["user_name"] ? $_SESSION["user_name"] : $_SESSION["first_name"]) . ', dai un\'occhiata agli artisti del nostro rooster!';
+                                                echo 'Ciao ' . (isset($_SESSION["user_name"]) && $_SESSION["user_name"] ? $_SESSION["user_name"] : $_SESSION["first_name"]) . ', dai un\'occhiata agli artisti del nostro roster!';
                                         } else {
                                                 echo 'Ciao ' . (isset($_SESSION["user_name"]) && $_SESSION["user_name"] ? $_SESSION["user_name"] : $_SESSION["first_name"]) . ', inizia a recensire i tuoi album preferiti!';
                                         }
@@ -107,21 +107,21 @@ require_once 'db/get_user_by_cookie.php';
                                 echo '<div class="' . $page . '-grid">';
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     if ($page === 'albums') {
-                                        echo '<div class="album-item">';
-                                        echo '<a href="album.php?id=' . $row['id'] . '">';
-                                        echo '<img src="' . $row['cover'] . '" alt="' . $row['title'] . '">';
-                                        echo '<p>' . $row['title'] . '</p>';
-                                        echo '</a>';
-                                        echo '</div>';
+                                        echo '<div class="album-item">
+                                                        <a href="album.php?id=' . $row['id'] . '">
+                                                        <img src="' . $row['cover'] . '" alt="' . $row['title'] . '">
+                                                        <p>' . $row['title'] . '</p>
+                                                        </a>
+                                                </div>';
 
                                     } elseif ($page === 'artists') {
-                                        echo '<div class="artist-item">';
-                                        echo '<a href="artist.php?id=' . $row['id'] . '">';
-                                        echo '<img src="' . $row['photo'] . '" alt="' . $row['artist_name'] . '">';
-                                        echo '<p>' . $row['artist_name'] . '</p>';
-                                        echo '</a>';
-                                        echo '</div>';
-                                    }
+                                        echo '<div class="artist-item">
+                                                        <a href="artist.php?id=' . $row['id'] . '">
+                                                        <img src="' . $row['photo'] . '" alt="' . $row['artist_name'] . '">
+                                                        <p>' . $row['artist_name'] . '</p>
+                                                        </a>
+                                                </div>';
+                                        }
                                 }
                                 echo '</div>';
                             } else {

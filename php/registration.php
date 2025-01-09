@@ -44,9 +44,9 @@
     }
 
     if (!empty($errors)) {
-        echo "<p>" . implode("<br>", $errors) . "</p>";
-        echo "<p>Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>";
-        echo "<script>
+        echo "<p>" . implode("<br>", $errors) . "</p>
+        <p>Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../registration_form.php';
                 }, 2000);
@@ -55,8 +55,8 @@
     }
 
     if (strlen($user) > 20) {
-        echo "<p>Lo username non puo' superare i 20 caratteri.</p>";
-        echo "<script>
+        echo "<p>Lo username non puo' superare i 20 caratteri.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../login_form.php';
                 }, 2000);
@@ -71,16 +71,16 @@
         mysqli_stmt_bind_param($stmt, "sssssi", $first, $last, $user, $email, $hashedPassword, $newsletter);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "<p>Registrazione avvenuta con successo. Sarai reindirizzato alla pagina di login tra 2 secondi.</p>";
-            echo "<script>
+            echo "<p>Registrazione avvenuta con successo. Sarai reindirizzato alla pagina di login tra 2 secondi.</p>
+            <script>
                     setTimeout(function() {
                         window.location.href = '../login_form.php';
                     }, 2000);
                   </script>";
             exit();
         } else {
-            echo "<p>Errore durante la registrazione. Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>";
-            echo "<script>
+            echo "<p>Errore durante la registrazione. Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>
+            <script>
                     setTimeout(function() {
                         window.location.href = '../registration_form.php';
                     }, 2000);
@@ -90,8 +90,8 @@
 
         mysqli_stmt_close($stmt);
     } else{
-        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>";
-        echo "<script>
+        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al modulo di registrazione tra 2 secondi.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../registration_form.php';
                 }, 2000);

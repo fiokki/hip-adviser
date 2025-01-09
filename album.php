@@ -7,28 +7,38 @@
         $album_id = $_GET['id'];
         $album_query = "SELECT albums.id, title, release_date, cover, link, artist_id, artist_name FROM albums LEFT JOIN artists ON albums.artist_id=artists.id WHERE albums.id = ?";
         $reviews_query = "SELECT reviews.id, rating, comment, reviews.created_at, user_name, first_name, last_name FROM reviews LEFT JOIN users ON users.id = user_id WHERE album_id = ?";
+        $avg_rating_query = "SELECT COUNT(*) as n_rec, AVG(rating) as avg FROM reviews WHERE album_id = ?";
         $album_stmt = mysqli_prepare($conn, $album_query);
         $reviews_stmt = mysqli_prepare($conn, $reviews_query);
+        $avg_rating_stmt = mysqli_prepare($conn, $avg_rating_query);
         
-        if ($album_stmt && $reviews_stmt) {
+        if ($album_stmt && $reviews_stmt && $avg_rating_query) {
+
             //Query per album
             mysqli_stmt_bind_param($album_stmt, 'i', $album_id);
             mysqli_stmt_execute($album_stmt);
             mysqli_stmt_store_result($album_stmt);
-    
-            if (mysqli_stmt_num_rows($album_stmt) > 0) {
-                mysqli_stmt_bind_result($album_stmt, $album_id, $title, $release_date, $cover, $link, $artist_id, $artist_name);
-                mysqli_stmt_fetch($album_stmt);
-            }
+            mysqli_stmt_bind_result($album_stmt, $album_id, $title, $release_date, $cover, $link, $artist_id, $artist_name);
+            mysqli_stmt_fetch($album_stmt);
             mysqli_stmt_close($album_stmt);
+
             //Query per reviews
             mysqli_stmt_bind_param($reviews_stmt, 'i', $album_id);
             mysqli_stmt_execute($reviews_stmt);
             $reviews_result = mysqli_stmt_get_result($reviews_stmt);
+            mysqli_stmt_close($reviews_stmt);
+
+            //Query per average review
+            mysqli_stmt_bind_param($avg_rating_stmt, 'i', $album_id);
+            mysqli_stmt_execute($avg_rating_stmt);
+            mysqli_stmt_store_result($avg_rating_stmt);
+            mysqli_stmt_bind_result($avg_rating_stmt, $n_rec, $avg_rating);
+            mysqli_stmt_fetch($avg_rating_stmt);
+            mysqli_stmt_close($avg_rating_stmt);
 
         } else {
-            echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato all'homepage tra 2 secondi.</p>";
-            echo "<script>
+            echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato all'homepage tra 2 secondi.</p>
+                <script>
             setTimeout(function() {
                 window.location.href = 'homepage.php';
             }, 2000);
@@ -45,13 +55,25 @@
         <?php 
             include_once 'layout-elements/header.php';
             if ($title === 'Album non trovato') {
-                echo '<div class="no-albums">Nessun album trovato.</div>';
+                echo "<p>Album non trovato. Sarai reindirizzato alla homepage tra 2 secondi.</p>
+                <script>
+                        setTimeout(function() {
+                            window.location.href = 'homepage.php';
+                        }, 2000);
+                      </script>";
+                exit();
             } else {
-                echo '<div class="album-container">';
-                echo '<img src="' . htmlspecialchars($cover) . '" alt="' . htmlspecialchars($title) . ' cover">';
-                echo '<h1>' . htmlspecialchars($title) . '</h1>';
-                echo '<h3> Rilasciato il: ' . htmlspecialchars(formatDate($release_date)) . '</h3>';
-                echo '</div>';
+                echo '<div class="album-container">
+                        <span class="album-info">
+                        <img src="' . htmlspecialchars($cover) . '" alt="' . htmlspecialchars($title) . ' cover">
+                        <h1>' . htmlspecialchars($title) . '</h1>
+                        <h3> Rilasciato il: ' . htmlspecialchars(formatDate($release_date)) . '</h3>
+                        </span>
+                        <span class="avg-ratings">
+                            <h2> Valutazioni dei nostri utenti:' . $avg_rating . '/5 </h2>
+                            <h3> Basato su ' . $n_rec . ' valutazioni.</h3>
+                        </span>
+                    </div>';
                 // review form
                 echo '<div class="review-form">
                         <h2>Lascia la tua recensione</h2>
@@ -73,7 +95,7 @@
                                 <label for="comment">Dicci cosa ne pensi:</label><br>
                                 <textarea id="comment" name="comment"></textarea>
                             </div>
-                            <button type="submit" class="submit-btn">Invia recensione</button>
+                            <input type="submit" class="submit-btn" value="Invia recensione">
                         </form>
                         </div>';
                 if (mysqli_num_rows($reviews_result) === 0){
@@ -84,12 +106,12 @@
                         <h2> Le valutazioni dei nostri utenti: </h2>';
                     while ($row = mysqli_fetch_assoc($reviews_result)){
                         $displayed_name = $row['user_name'] != null ? $row['user_name'] : $row['first_name'] . ' ' . $row['last_name'];
-                        echo '<div class="review-item">';
-                        echo '<h4>' . $displayed_name . '<h4>';
-                        echo '<p>' . $row['created_at'] . '</p>';
-                        echo '<p>' . $row['rating'] . '/5 </p>';
-                        echo '<p>' . $row['comment'] . '</p>';
-                        echo '</div>';
+                        echo '<div class="review-item">
+                                <h4>' . $displayed_name . '<h4>
+                                <p>' . $row['created_at'] . '</p>
+                                <p>' . $row['rating'] . '/5 </p>
+                                <p>' . $row['comment'] . '</p>
+                                </div>';
                     }
                     echo '</div>';
                 }

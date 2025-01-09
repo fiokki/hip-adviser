@@ -19,9 +19,9 @@
     }
 
     if (!empty($errors)) {
-        echo "<p>" . implode("<br>", $errors) . "</p>";
-        echo "<p>Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
-        echo "<script>
+        echo "<p>" . implode("<br>", $errors) . "</p>
+        <p>Sarai reindirizzato al modulo di login tra 2 secondi.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../login_form.php';
                 }, 2000);
@@ -71,8 +71,8 @@
                 }
 
                 // Successo, invia una risposta positiva
-                    echo "<p>Login avvenuto con successo. Sarai reindirizzato all'homepage tra 2 secondi.</p>";
-                    echo "<script>
+                    echo "<p>Login avvenuto con successo. Sarai reindirizzato all'homepage tra 2 secondi.</p>
+                        <script>
                             setTimeout(function() {
                                 window.location.href = '../homepage.php';
                             }, 2000);
@@ -80,8 +80,8 @@
                     exit();
                 } else {
                 // Password errata
-                    echo "<p>La password &eacute errata. Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
-                    echo "<script>
+                    echo "<p>La password &eacute errata. Sarai reindirizzato al modulo di login tra 2 secondi.</p>
+                    <script>
                         setTimeout(function() {
                             window.location.href = '../login_form.php';
                         }, 2000);
@@ -90,8 +90,8 @@
             }
         } else {
             // Utente non trovato
-            echo "<p>La email inserita non &eacute corretta. Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
-            echo "<script>
+            echo "<p>La email inserita non &eacute corretta. Sarai reindirizzato al modulo di login tra 2 secondi.</p>
+            <script>
             setTimeout(function() {
                 window.location.href = '../login_form.php';
             }, 2000);
@@ -102,8 +102,8 @@
         mysqli_stmt_close($stmt);
     } else {
         // Errore nella preparazione della query
-        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al modulo di login tra 2 secondi.</p>";
-        echo "<script>
+        echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al modulo di login tra 2 secondi.</p>
+        <script>
                 setTimeout(function() {
                     window.location.href = '../login_form.php';
                 }, 2000);

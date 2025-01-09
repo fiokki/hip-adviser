@@ -52,26 +52,26 @@ require_once 'db/get_user_by_cookie.php';
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 if (mysqli_num_rows($result) > 0) {
-                    echo '<div class="homepage-container">';
-                        echo '<div class="welcome">';
-                            echo '<h2>' . ($search !== '' ? 'Ecco i risultati per la ricerca: "' . htmlspecialchars($search) . '"' : 'Ecco tutti gli artisti e album disponibili') . '</h2>';
-                        echo '</div>';
-                        echo '<div class="albums-grid">';
+                    echo '<div class="homepage-container">
+                            <div class="welcome">
+                                <h2>' . ($search !== '' ? 'Ecco i risultati per la ricerca: "' . htmlspecialchars($search) . '"' : 'Ecco tutti gli artisti e album disponibili') . '</h2>
+                            </div>
+                        <div class="albums-grid">';
                         while ($row = mysqli_fetch_assoc($result)) {
                             if ($row['type'] === 'album') {
-                                echo '<div class="album-item">';
-                                echo '<img src="' . $row['img_url'] . '" alt="' . $row['name'] . '">';
-                                echo '<p>' . $row['name'] . '</p>';
-                                echo '</div>';
+                                echo '<div class="album-item">
+                                        <img src="' . $row['img_url'] . '" alt="' . $row['name'] . '">
+                                        <p>' . $row['name'] . '</p>
+                                    </div>';
                             } elseif ($row['type'] === 'artist') {
-                                echo '<div class="artist-item">';
-                                echo '<img src="' . $row['img_url'] . '" alt="' . $row['name'] . '">';
-                                echo '<p>' . $row['name'] . '</p>';
-                                echo '</div>';
+                                echo '<div class="artist-item">
+                                        <img src="' . $row['img_url'] . '" alt="' . $row['name'] . '">
+                                        <p>' . $row['name'] . '</p>
+                                    </div>';
                             }
                         }
-                        echo '</div>';
-                    echo '</div>';
+                        echo '</div>
+                        </div>';
                 } else {
                     echo '<div class="no-albums">Nessun album o artista trovato.</div>';
                 }
@@ -79,8 +79,8 @@ require_once 'db/get_user_by_cookie.php';
             }
             else {
                 // Errore nella preparazione della query
-                echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato all'homepage tra 2 secondi.</p>";
-                echo "<script>
+                echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato all'homepage tra 2 secondi.</p>
+                    <script>
                 setTimeout(function() {
                     window.location.href = 'homepage.php';
                 }, 2000);
