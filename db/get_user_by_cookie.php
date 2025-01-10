@@ -11,7 +11,7 @@ function getUserByCookie($conn, $cookie) {
         $result = mysqli_stmt_get_result($stmt);
         $user = mysqli_fetch_assoc($result);
         mysqli_stmt_close($stmt);
-        return $user ? $user['user_id'] : null;
+        return $user ? $user : null;
     } else {
         error_log("Errore nella preparazione della query: " . mysqli_error($conn));
         return null;
@@ -22,7 +22,7 @@ if (!isset($_SESSION["user_id"]) && isset($_COOKIE['remember_me'])) {
     $cookie = $_COOKIE['remember_me'];
     $user = getUserByCookie($conn, $cookie);
 
-    if ($user_id) {
+    if ($user) {
         $_SESSION["user_id"] = $user['id'];
         $_SESSION["first_name"] = $user['first_name'];
         $_SESSION["last_name"] = $user['last_name'];
