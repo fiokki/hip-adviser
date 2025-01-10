@@ -47,7 +47,6 @@ require_once '../db/get_user_by_cookie.php';
                         <th>Cognome</th>
                         <th>Email</th>
                         <th>Ruolo</th>
-                        <th>Stato</th>
                         <th>Data Registrazione</th>
                         <th>Azioni</th>
                     </tr>
@@ -61,12 +60,10 @@ require_once '../db/get_user_by_cookie.php';
                             <td><?php echo $row['last_name']; ?></td>
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo ucfirst($row['role']); ?></td>
-                            <!-- <td><?php echo ucfirst($row['status']); ?></td> -->
                             <td><?php echo $row['created_at']; ?></td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Modifica</a>
-                                    <a href="ban_user.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Ban</a>
                                     <a href="delete_user.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo utente?');">Elimina</a>
                                 </div>
                             </td>
@@ -80,7 +77,7 @@ require_once '../db/get_user_by_cookie.php';
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <?php require_once '../layout-elements/footer.php' ?>
 
-        <?php include_once '../layout-elements/footer.php'; ?>
     </body>
 </html>

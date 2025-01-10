@@ -66,10 +66,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <img src="' . $row['cover'] . '" alt="' . $row['title'] . '">
                                 <p>' . $row['title'] . '</p>
                                 </a>
-                            </div>
-                        </div>
                         </div>';
                     }
+            echo '    </div>
+                </div>';
         } else {
             echo '<div class="no-albums">Nessun album trovato.</div>';
         }

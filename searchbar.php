@@ -12,6 +12,7 @@ require_once 'db/get_user_by_cookie.php';
 
             $query = "SELECT
             'artist' AS type,
+            artists.id AS id,
             artists.artist_name AS name,
             artists.photo AS img_url,
             CASE
@@ -27,6 +28,7 @@ require_once 'db/get_user_by_cookie.php';
 
         SELECT
             'album' AS type,
+            albums.id AS id,
             albums.title AS name,
             albums.cover AS img_url,
             CASE
@@ -60,13 +62,17 @@ require_once 'db/get_user_by_cookie.php';
                         while ($row = mysqli_fetch_assoc($result)) {
                             if ($row['type'] === 'album') {
                                 echo '<div class="album-item">
+                                        <a href="album.php?id=' . $row['id'] . '">
                                         <img src="' . $row['img_url'] . '" alt="' . $row['name'] . '">
                                         <p>' . $row['name'] . '</p>
+                                        </a>
                                     </div>';
                             } elseif ($row['type'] === 'artist') {
                                 echo '<div class="artist-item">
+                                        <a href="artist.php?id=' . $row['id'] . '">
                                         <img src="' . $row['img_url'] . '" alt="' . $row['name'] . '">
                                         <p>' . $row['name'] . '</p>
+                                        </a>
                                     </div>';
                             }
                         }

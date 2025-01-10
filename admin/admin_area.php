@@ -21,7 +21,6 @@ require_once '../db/get_user_by_cookie.php';
                 <button onclick="window.location.href='manage_users.php'">Gestione Utenti</button>
                 <button onclick="window.location.href='manage_hipadviser.php'">Gestione Sito</button>
                 <button onclick="window.location.href='manage_posts.php'">Gestione Post</button>
-                <button onclick="window.location.href='manage_roles.php'">Gestione Ruoli</button>
                 <button onclick="window.location.href='statistics.php'">Statistiche</button>
             </div>
         </div>
