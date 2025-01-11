@@ -1,6 +1,6 @@
 <?php
 require_once '../db/get_user_by_cookie.php';
-require_once '../vendor/autoload.php'; // PHPMailer
+require_once 'vendor/autoload.php'; // PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
         if (mysqli_stmt_execute($stmt)) {
             echo "<p>Album inserito con successo!</p>";
             sendNewsletter($title, $release_date, $link, $artist_id);
-            echo "<script>setTimeout(function() { window.location.href = 'album_list.php'; }, 2000);</script>";
+            echo "<script>setTimeout(function() { window.location.href = 'manage_albums.php'; }, 2000);</script>";
         } else {
             echo "<p>Errore durante l'inserimento dell'album.</p>";
             echo "<script>setTimeout(function() { window.history.back(); }, 2000);</script>";
@@ -78,8 +78,7 @@ if (isset($_POST['submit'])) {
 
     mysqli_close($conn);
 }
-?>
-<?
+
 // GESTIONE DELLA NEWSLETTER
 function sendNewsletter($title, $release_date, $link, $artist_id) {
     global $conn;
@@ -88,7 +87,8 @@ function sendNewsletter($title, $release_date, $link, $artist_id) {
     $sql = "SELECT email, first_name FROM users WHERE newsletter = 1";
     $result = mysqli_query($conn, $sql);
 
-    $artist_sql = "SELECT name FROM artists WHERE id = ?";
+    // Ottengo l'artista
+    $artist_sql = "SELECT artist_name FROM artists WHERE id = ?";
     $stmt = mysqli_prepare($conn, $artist_sql);
     mysqli_stmt_bind_param($stmt, "s", $artist_id);
     mysqli_stmt_execute($stmt);
@@ -100,7 +100,7 @@ function sendNewsletter($title, $release_date, $link, $artist_id) {
     $newsletter_subject = "Nuovo Album in uscita: $title!";
     $newsletter_body = "
     <p>Ciao {first_name},</p>
-    <p>Siamo felici di annunciarti che il nuovo album <b>$title</b> di <b>$artist_name</b> uscirà il <b>$release_date</b>.</p>
+    <p>Siamo felici di annunciarti che il nuovo album <b>$title</b> di <b>$artist_name</b> uscira' il <b>$release_date</b>.</p>
     <p>Corri ad ascoltarlo su spotify,<a href='$link'> cliccando qui! </a>.</p>
     <p>E non appena hai finito, <a href='https://saw.dibris.unige.it/~s5721355/homepage.php'>vieni a recensirlo sul nostro sito!</a></p>
     <p>Non vediamo l'ora di sentire la tua opinione!</p>
@@ -113,13 +113,13 @@ function sendNewsletter($title, $release_date, $link, $artist_id) {
         $mail = new PHPMailer(true);
         try {
             // Configura il server SMTP
+            $mail = new PHPMailer();
             $mail->isSMTP();
-            $mail->Host = 'smtp.mailtrap.io'; // Server SMTP di esempio
+            $mail->Host = 'sandbox.smtp.mailtrap.io';
             $mail->SMTPAuth = true;
-            $mail->Username = 'your_username';
-            $mail->Password = 'your_password';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
+            $mail->Port = 2525;
+            $mail->Username = 'dc1af032814c51';
+            $mail->Password = '3b08280a29d36f';
 
             // Impostazioni email
             $mail->setFrom('newsletter@hipadviser.com', 'Hip-Adviser');

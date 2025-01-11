@@ -1,8 +1,8 @@
 <?php
-require_once 'db/get_user_by_cookie.php';
+require_once '../db/get_user_by_cookie.php';
 ?>
 <html lang="it">
-        <?php include_once 'layout-elements/head.php' ?>
+        <?php include_once '../layout-elements/head.php' ?>
         <title> Hip-Adviser | Modifica Profilo </title>
         </head>
         <body>
@@ -21,7 +21,7 @@ require_once 'db/get_user_by_cookie.php';
                     echo "<p>Utente non trovato. Sarai reindirizzato alla homepage tra 2 secondi.</p>";
                     echo "<script>
                             setTimeout(function() {
-                                window.location.href = 'homepage.php';
+                                window.location.href = '../homepage.php';
                             }, 2000);
                           </script>";
                     exit();
@@ -30,11 +30,11 @@ require_once 'db/get_user_by_cookie.php';
                 mysqli_stmt_close($stmt);
                 mysqli_close($conn);
                 ?>
-                <?php include_once 'layout-elements/header.php'; ?>
+                <?php include_once '../layout-elements/header.php'; ?>
         
                 <div class="profile-container">
                     <h2>Modifica Le Tue Informazioni Personali</h2>
-                    <form id="updateForm" action="php/update_profile.php" method="POST" onsubmit="return validateForm()">
+                    <form id="updateForm" action="update_profile.php" method="POST" onsubmit="return validateForm()">
 
                         <div class="profile-form-group">
                             <label for="firstname">Nome:</label>
@@ -72,7 +72,7 @@ require_once 'db/get_user_by_cookie.php';
                     <div id="updateError" class="error"></div>
                 </div>
 
-                <?php require_once 'layout-elements/footer.php' ?>
+                <?php require_once '../layout-elements/footer.php' ?>
 
                 <script>
                 function validateForm() {
@@ -116,7 +116,7 @@ require_once 'db/get_user_by_cookie.php';
 
             <?php }
             else{
-                require_once 'layout-elements/no_permiss.php';
+                require_once '../layout-elements/no_permiss.php';
             }?>
         </body>
 </html>

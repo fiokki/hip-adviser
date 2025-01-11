@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p> Sarai reindirizzato alla pagina del tuo profilo tra 2 secondi. </p>";
         echo "<script>
                 setTimeout(function() {
-                    window.location.href = '../show_profile.php';
+                    window.location.href = '.show_profile.php';
                 }, 2000);
               </script>";
         exit();
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Aggiornamento del profilo avvenuto con successo. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
             echo "<script>
                     setTimeout(function() {
-                        window.location.href = '../show_profile.php';
+                        window.location.href = 'show_profile.php';
                     }, 2000);
                   </script>";
             exit();
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Errore durante l'aggiornamento del profilo. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>";
             echo "<script>
                     setTimeout(function() {
-                        window.location.href = '../show_profile.php';
+                        window.location.href = 'show_profile.php';
                     }, 2000);
                   </script>";
             exit();
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Errore nella preparazione della query. Sarai reindirizzato al tuo profilo tra 2 secondi. </p>";
         echo "<script>
                 setTimeout(function() {
-                    window.location.href = '../show_profile.php';
+                    window.location.href = 'show_profile.php';
                 }, 2000);
               </script>";
         exit();

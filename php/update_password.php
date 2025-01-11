@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p> Verrai reindirizzato alla pagina del tuo profilo tra 2 secondi. </p>
         <script>
                 setTimeout(function() {
-                    window.location.href = '../show_profile.php';
+                    window.location.href = 'show_profile.php';
                 }, 2000);
               </script>";
         exit();
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             echo "<p>Aggiornamento della password avvenuto con successo. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
                             <script>
                                     setTimeout(function() {
-                                        window.location.href = '../show_profile.php';
+                                        window.location.href = 'show_profile.php';
                                     }, 2000);
                                   </script>";
                             exit();
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             echo "<p>Errore durante l'aggiornamento della password. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
                             <script>
                                     setTimeout(function() {
-                                        window.location.href = '../show_profile.php';
+                                        window.location.href = 'show_profile.php';
                                     }, 2000);
                                   </script>";
                         }
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<p>Password attuale inserita non corretta. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
                 <script>
                         setTimeout(function() {
-                            window.location.href = '../show_profile.php';
+                            window.location.href = 'show_profile.php';
                         }, 2000);
                       </script>";
             }
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Utente non trovato. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
             <script>
                     setTimeout(function() {
-                        window.location.href = '../show_profile.php';
+                        window.location.href = 'show_profile.php';
                     }, 2000);
                   </script>";
             exit();
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Errore del server. Riprovi più tardi. Sarai reindirizzato al tuo profilo tra 2 secondi.</p>
         <script>
                 setTimeout(function() {
-                    window.location.href = '../show_profile.php';
+                    window.location.href = 'show_profile.php';
                 }, 2000);
               </script>";
         exit();

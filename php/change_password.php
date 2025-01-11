@@ -1,18 +1,18 @@
 <?php
-require_once 'db/get_user_by_cookie.php';
+require_once '../db/get_user_by_cookie.php';
 ?>
 <html lang="it">
-        <?php include_once 'layout-elements/head.php' ?>
+        <?php include_once '../layout-elements/head.php' ?>
         <title> Hip-Adviser | Modifica Password </title>
         </head>
         <body>
             <?php if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]){ ?>
                 
-                <?php include_once 'layout-elements/header.php'; ?>
+                <?php include_once '../layout-elements/header.php'; ?>
         
                 <div class="profile-container">
                     <h2>Modifica La Tua Password</h2>
-                    <form id="updatePasswordForm" action="php/update_password.php" method="POST" onsubmit="return validateForm()">
+                    <form id="updatePasswordForm" action="update_password.php" method="POST" onsubmit="return validateForm()">
 
                         <div class="profile-form-group">
                             <label for="password">Inserisci la tua password attuale:</label>
@@ -39,7 +39,7 @@ require_once 'db/get_user_by_cookie.php';
                     <div id="updatePasswordError" class="error"></div>
                 </div>
 
-                <?php require_once 'layout-elements/footer.php' ?>
+                <?php require_once '../layout-elements/footer.php' ?>
 
                 <script>
                 function validateForm() {
@@ -73,7 +73,7 @@ require_once 'db/get_user_by_cookie.php';
 
             <?php }
             else{
-                require_once 'no_permiss.php';
+                require_once '../layout-elements/no_permiss.php';
             }?>
         </body>
 </html>
