@@ -86,13 +86,15 @@
                             <img src="' . htmlspecialchars($cover) . '" alt="' . htmlspecialchars($title) . ' cover">
                             <h1>' . htmlspecialchars($title) . '</h1>
                             <div class="artist-info">
-                                <img src="' . htmlspecialchars($artist_photo) . '" alt="' . htmlspecialchars($artist_name) . '">
-                                <h3>' .   htmlspecialchars($artist_name) . '</h3>
+                                <a href="artist.php?id='. $artist_id . '">
+                                    <img src="' . htmlspecialchars($artist_photo) . '" alt="' . htmlspecialchars($artist_name) . '">
+                                    <h3>' .   htmlspecialchars($artist_name) . '</h3>
+                                </a>
                             </div>
                             <h3> Rilasciato il: ' . htmlspecialchars(formatDate($release_date)) . '</h3>
                             </span>
                             <span class="avg-ratings">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3fhMfkPPzksWuw0hEm4ldm?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                <iframe style="border-radius:12px" src="' . htmlspecialchars($link) . '" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                                 <h2> Valutazioni dei nostri utenti:' . round($avg_rating, 1) . '/5 </h2>
                                 <h3> Basato su ' . $n_rec . ' valutazioni.</h3>
                             </span>

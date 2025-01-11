@@ -802,6 +802,16 @@ footer .socials img.social-logo {
   margin: 5px 0;
 }
 
+
+.artist-info a:link{
+  text-decoration: none;
+  color: #ffb101;
+}
+
+.artist-info a:visited{
+  color: #ffb101;
+}
+
 .artist-info img {
   width: 50px;
   height: 50px;
@@ -819,18 +829,6 @@ footer .socials img.social-logo {
 
 .avg-ratings h2, .avg-ratings h3 {
   margin: 5px 0;
-}
-
-.spotify-button {
-  background-color: #1DB954;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 10px;
 }
 
 .review-form {
@@ -881,6 +879,7 @@ footer .socials img.social-logo {
   width: 500px;
   height: 300px; 
   resize: none;
+  padding: 10px;
   color: #ffb101;
   background-color: #373838;
   border: 2px solid #1d1d1d;
