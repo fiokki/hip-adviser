@@ -1,6 +1,5 @@
 # Cose da fare
 ## Obbligatorie
-- Modificare foto artista in album
 ## Facoltative
 - fare l'htaccess per gestire l'accesso alle directory dagli utenti
 - Cambiare nome per la gioia di Fra :D no, porcodio

@@ -85,19 +85,17 @@
                             <span class="album-info">
                             <img src="' . htmlspecialchars($cover) . '" alt="' . htmlspecialchars($title) . ' cover">
                             <h1>' . htmlspecialchars($title) . '</h1>
-                            <div class="artist-info">
-                                <a href="artist.php?id='. $artist_id . '">
-                                    <img src="' . htmlspecialchars($artist_photo) . '" alt="' . htmlspecialchars($artist_name) . '">
-                                    <h3>' .   htmlspecialchars($artist_name) . '</h3>
-                                </a>
-                            </div>
+                            <a href="artist.php?id='. $artist_id . '">
+                                <div class="artist-info">
+                                        <img src="' . htmlspecialchars($artist_photo) . '" alt="' . htmlspecialchars($artist_name) . '">
+                                        <h3>' .   htmlspecialchars($artist_name) . '</h3>
+                                </div>
+                            </a>
                             <h3> Rilasciato il: ' . htmlspecialchars(formatDate($release_date)) . '</h3>
                             </span>
-                            <span class="avg-ratings">
+                            <div class="spotify">
                                 <iframe style="border-radius:12px" src="' . htmlspecialchars($link) . '" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                <h2> Valutazioni dei nostri utenti:' . round($avg_rating, 1) . '/5 </h2>
-                                <h3> Basato su ' . $n_rec . ' valutazioni.</h3>
-                            </span>
+                            </div>
                         </div>';
 
                         
@@ -152,6 +150,10 @@
                 else {
                     echo '<div class="reviews-container">
                         <h2 class="reviews-title"> Le valutazioni dei nostri utenti: </h2>
+                        <div class="reviews-subtitle">
+                        <h3> Voto medio:' . round($avg_rating, 1) . '/5 </h2>
+                        <h3> Basato su ' . $n_rec . ' recensioni.</h3>
+                        </div>
                         <div class="review-grid">';
                             while ($row = mysqli_fetch_assoc($reviews_result)) {
                                 $displayed_name = $row['user_name'] != null ? $row['user_name'] : $row['first_name'] . ' ' . $row['last_name'];
