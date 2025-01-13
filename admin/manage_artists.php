@@ -55,7 +55,7 @@ require_once '../db/get_user_by_cookie.php';
             
             <!-- Pulsante per inserire un nuovo artista -->
             <div class="mb-3">
-                <a href="insert_artist.php" class="btn btn-success">Inserisci Artista</a>
+                <a href="../layout-elements/work_in_progress.php" class="btn btn-success">Inserisci Artista</a>
             </div>
 
             <div class="table-responsive">
@@ -78,8 +78,8 @@ require_once '../db/get_user_by_cookie.php';
                                 <td><?php echo substr($row['bio'], 0, 100) . '...'; ?></td> <!-- Mostro solo una parte della bio -->
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="edit_artist.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Modifica</a>
-                                        <a href="delete_artist.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo artista?');">Elimina</a>
+                                        <a href="../layout-elements/work_in_progress.php" class="btn btn-primary btn-sm">Modifica</a>
+                                        <a href="../layout-elements/work_in_progress.php" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo artista?');">Elimina</a>
                                     </div>
                                 </td>
                             </tr>

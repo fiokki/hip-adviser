@@ -83,8 +83,8 @@ require_once '../db/get_user_by_cookie.php';
                                 <td><a href="<?php echo $row['link']; ?>" target="_blank">Ascolta</a></td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="edit_album.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Modifica</a>
-                                        <a href="delete_album.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo album?');">Elimina</a>
+                                        <a href="../layout-elements/work_in_progress.php" class="btn btn-primary btn-sm">Modifica</a>
+                                        <a href="../layout-elements/work_in_progress.php" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo album?');">Elimina</a>
                                     </div>
                                 </td>
                             </tr>

@@ -63,7 +63,7 @@ require_once '../db/get_user_by_cookie.php';
                             <td><?php echo $row['created_at']; ?></td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Modifica</a>
+                                    <a href="../layout-elements/work_in_progress.php" class="btn btn-primary btn-sm">Modifica</a>
                                     <a href="delete_user.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo utente?');">Elimina</a>
                                 </div>
                             </td>
