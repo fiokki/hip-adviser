@@ -63,7 +63,7 @@ require_once 'db/get_user_by_cookie.php';
                         // Di default vogliamo visualizzare gli album dal più recente. Se invece è applicato un filtro, visualizziamo in base a ciò che vuole l'utente.
                         // Abbiamo già ricavato il valore di 'page', quindi ricaviamo 'filter' e 'order', se sono impostati
                         $filter = isset($_GET['filter']) ? $_GET['filter'] : 'release_date';
-                        $order = isset($_GET['order']) ? $_GET['order'] : 'DESC';
+                        $order = isset($_GET['order']) && in_array($_GET['order'], ['ASC', 'DESC']) ? $_GET['order'] : 'DESC';
                 
                         // Crea la query dinamica in base al filtro e all'ordinamento
                         if ($page === 'albums'){
