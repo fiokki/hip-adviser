@@ -1,0 +1,8 @@
+# Abilita il modulo di riscrittura
+RewriteEngine On
+
+# Condizione: Se l'utente sta cercando di accedere esattamente alla cartella "admin"
+RewriteCond %{REQUEST_URI} ^/~s5721355/db/?$
+
+# Regola: Redirezione alla pagina "no_permiss.php"
+RewriteRule ^$ /~s5721355/layout-elements/no_permiss.php [L,R=301]
